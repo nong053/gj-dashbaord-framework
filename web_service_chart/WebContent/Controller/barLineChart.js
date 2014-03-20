@@ -167,9 +167,15 @@ var barBarLineChart=function(chartId,data,option){
     
    
        // $.jqplot(chartId, [ planned,actual, trend], BarChart());
-    	 $.jqplot(chartId, obValue, callBarChart());
+	    
+	    if(seriesArrayUnique.length==2){
+	    	$.jqplot(chartId, obValue, callBarChart());
+	    }else if(seriesArrayUnique.length==3){
+	    	$.jqplot(chartId, obValue, callBarChart2());
+	    }
+    	 
    
-
+    	 
     	 function callBarChart()
     	    {
     	        var optionsObj = {
@@ -195,7 +201,7 @@ var barBarLineChart=function(chartId,data,option){
     	            series: [
     	                     
 						
-
+    	                    
     	               {label:Planned,renderer:$.jqplot.BarRenderer},
     	                //{label: 'Actual',renderer:$.jqplot.BarRenderer},
     	                {label: Actual}
@@ -223,6 +229,57 @@ var barBarLineChart=function(chartId,data,option){
     	        };
     	        return optionsObj;
     	    }
+    	 
+    	 function callBarChart2()
+ 	    {
+ 	        var optionsObj = {
+ 	            title: option['title'],
+ 	            axes: {
+ 	                 xaxis: {
+ 	                    renderer: $.jqplot.CategoryAxisRenderer,
+ 	                    ticks: cate,                       
+ 	                },
+ 	                yaxis: {
+ 	                    tickOptions: { showMark: false, formatString: "%d" },                       
+ 	                },
+ 	            },
+ 	            axesDefaults: {
+ 	                tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+ 	                tickOptions: {
+ 	                  angle: option['cateRotate'],
+ 	                  fontSize: '10pt'
+ 	                }
+ 	            },
+ 	            seriesColors: option['theme'],
+
+ 	            series: [  
+ 	                {label:seriesArrayUnique[0],renderer:$.jqplot.BarRenderer},
+ 	                {label: seriesArrayUnique[1],renderer:$.jqplot.BarRenderer},
+ 	                {label: seriesArrayUnique[2]}
+ 	                ],
+
+ 	            legend: {
+ 	                show: true,
+ 	                location: option['location'] ,
+	                    placement :option['placement']
+ 	                },
+
+ 	            seriesDefaults:{
+ 	                shadow: false,
+ 	                rendererOptions:{
+ 	                   barPadding: 0,
+ 	                   barMargin: 10,
+ 	                   barWidth: 25,
+ 	               }
+
+ 	            }, 
+ 	            highlighter:{
+ 		            show:true,
+ 		            tooltipContentEditor:tooltipContentEditor
+ 		        },
+ 	        };
+ 	        return optionsObj;
+ 	    }
     	 
  	    $(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
     

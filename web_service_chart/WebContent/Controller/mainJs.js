@@ -39,6 +39,18 @@ $(document).ready(function(){
 				
 				
 				barChart("chart",data,option);	
+				
+				 $('#chart').bind('jqplotDataClick',
+		            function (ev, seriesIndex, pointIndex, data) {
+		                alert('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
+		            }
+		        );
+				 /*
+				 function tooltipContentEditor(str, seriesIndex, pointIndex, plot) {
+					    // display series_label, x-axis_tick, y-axis value
+					    return plot.series[seriesIndex]["label"] + ", " + plot.data[seriesIndex][pointIndex];
+					}
+				*/
 			}
 		});
 	});
@@ -165,6 +177,27 @@ $(document).ready(function(){
 		});
 	});
 	
+	$("#btnBarLineChart2").click(function(){
+		$.ajax({
+			url:"../Model/barLineChart2.jsp",
+			type:"get",
+			dataType:"json",
+			success:function(data){
+				
+				option=[];
+				option['cateRotate']=0;
+				option['theme']=theme;
+				option['title']="Graph BarlineChart";
+				option['tooltipTextColor']='white';
+				option['location']='e';
+				option['placement']='outside';
+				option['title']="ชื่อกราฟ";
+				barBarLineChart("chart",data,option);	
+			}
+		});
+	});
+	
+	
 	$("#btnChartHorizontalMutiSeries").click(function(){
 		$.ajax({
 			url:"../Model/barChartMutiSeries.jsp",
@@ -226,8 +259,8 @@ $(document).ready(function(){
 				option['intervalOuterRadius']=130;
 				option['tooltipTextColor']='white';
 				
+				gaugeChart("chart",data,option);
 				
-				gaugeChart("chart",data,option);	
 					
 			}
 		});

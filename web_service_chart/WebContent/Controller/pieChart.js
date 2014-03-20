@@ -1,10 +1,28 @@
 var pieChart = function(chartId,data,option){
 
-	// var value= eval("("+data+")");
+	 //var value= eval("("+data+")");
 	  
 	
-	        
-	            var plot1 = jQuery.jqplot (chartId, [data],
+	        //[[\"Heavy Industry\",12],[\"Retail\",9]]
+	var value = "";
+	value+="[";
+	
+	$.each(data,function(index,indexEntry){
+		if(index==0){
+			value+="[";
+			value+="\""+indexEntry[0]+"\""+","+indexEntry[1];
+			
+		}else{
+			value+=",[";
+			value+="\""+indexEntry[0]+"\""+","+indexEntry[1];
+		}
+		value+="]";
+	});
+	value+="]";
+	var valueObj= eval("("+value+")");
+	
+	
+	            var plot1 = jQuery.jqplot (chartId, [valueObj],
 	            		
 	              {
 	            	

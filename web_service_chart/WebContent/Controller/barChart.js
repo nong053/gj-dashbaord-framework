@@ -167,6 +167,7 @@ var barChart=function(chartId,data,option){
 	    });
 	    
 	    $(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
+	    
 	};
 	  
 	
