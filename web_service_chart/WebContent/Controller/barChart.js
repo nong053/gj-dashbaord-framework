@@ -108,7 +108,6 @@ var barChart=function(chartId,data,option){
 	            
 	        },
 	       
-	  
 	        stackSeries: option['stackSeries'],
 	        title: option['title'],
 	       // stackSeries: true,
@@ -158,11 +157,7 @@ var barChart=function(chartId,data,option){
 	        highlighter:{
 	            show:true,
 	            tooltipContentEditor:tooltipContentEditor
-	        },
-	        highlighter:{
-	            show:true,
-	            tooltipContentEditor:tooltipContentEditor
-	        },
+	        }
 
 	    });
 	    

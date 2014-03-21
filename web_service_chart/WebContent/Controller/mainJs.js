@@ -40,12 +40,21 @@ $(document).ready(function(){
 				
 				barChart("chart",data,option);	
 				
+				
+				
+				
+			
 				 $('#chart').bind('jqplotDataClick',
 		            function (ev, seriesIndex, pointIndex, data) {
-		                alert('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
+					 
+					 console.log($(this).get());
+		               // console.log('series: '+seriesIndex+', point: '+pointIndex+', data: '+data+'');
 		            }
 		        );
+				 
+		        
 				 /*
+				 
 				 function tooltipContentEditor(str, seriesIndex, pointIndex, plot) {
 					    // display series_label, x-axis_tick, y-axis value
 					    return plot.series[seriesIndex]["label"] + ", " + plot.data[seriesIndex][pointIndex];

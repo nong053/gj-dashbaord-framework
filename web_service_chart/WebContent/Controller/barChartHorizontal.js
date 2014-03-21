@@ -1,17 +1,5 @@
 var barChartHorizontal = function(chartId,data,option){
-	//checkOption end
-	Array.prototype.getUnique = function(){
-		   var u = {}, a = [];
-		   for(var i = 0, l = this.length; i < l; ++i){
-		      if(u.hasOwnProperty(this[i])) {
-		         continue;
-		      }
-		      a.push(this[i]);
-		      u[this[i]] = 1;
-		   }
-		   return a;
-		}
-//Array Unigue end
+	
 	
 	var cateArray= new Array();
 	var cateArrayUnique= new Array();
@@ -50,9 +38,81 @@ var barChartHorizontal = function(chartId,data,option){
 	series+="]";
 	
 	
+
+	var cateLength=cateArrayUnique.length-1;
+	
+	var slotArray= new Array();//get array all
+	var slotArray2= new Array();//get array for data is not empty
+	
+	for(var i=0;i<seriesArrayUnique.length;i++){
+		
+		
+		slotArray[i] = new Array();
+		slotArray2[i] = new Array();
+		
+		
+		for(var j=0;j<cateArrayUnique.length;j++){
+			slotArray[i][j]=cateArrayUnique[j];
+			//alert(cateArrayUnique[j]);
+			
+			$.each(data,function(index,indexEntry){
+				if((cateArrayUnique[j]==indexEntry[0])&&(seriesArrayUnique[i]==indexEntry[1])){
+					//alert(cateArrayUnique[j]+"-"+indexEntry[2]);
+					slotArray2[i][j]=indexEntry[2];
+					
+				}
+				
+			});
+
+		}
+		
+		
+	}
+
 	var value="";
 	value+="[[";
-	var cateLength=cateArrayUnique.length-1;
+	var checkUndefinedValue=0;
+	//manage import data value  and check undefined value
+	for(var i=0;i<slotArray.length;i++){
+				//alert(slotArray[i]);
+			for(var j=0;j<slotArray[i].length;j++){
+				if(slotArray2[i][j]==undefined){
+					checkUndefinedValue=0; 
+				}else{
+					checkUndefinedValue=slotArray2[i][j];
+				}
+
+				
+				if(i==0){
+					if(j==0){
+					value+=+checkUndefinedValue;
+					}else{
+					value+=","+checkUndefinedValue;	
+					}
+				}else{
+					if(cateLength==cateArrayUnique.length-1){
+						value+=",["+checkUndefinedValue;
+					}else{
+						value+=","+checkUndefinedValue;
+					}
+					
+				}
+				
+				if(cateLength==0){
+					value+="]";
+					cateLength=cateArrayUnique.length;
+				}
+				cateLength--;
+				
+				
+			}
+		
+	}
+	value+="]";
+	
+	//alert(value);
+	
+	/*
 		$.each(data,function(index,indexEntry){
 			
 				if(index==0){
@@ -71,28 +131,26 @@ var barChartHorizontal = function(chartId,data,option){
 					cateLength=cateArrayUnique.length;
 				}
 				cateLength--;
-								
-			
+				
+				
+				
 		});
+		
 		value+="]";
-	//alert(value);
+		*/
+		//alert(cateArrayUnique);
+		//alert(value);
+		//alert(series);
 	
 
     
     // Can specify a custom tick Array.
     // Ticks should match up one for each y value (category) in the series.
-	
+		
     var ticks =cateArrayUnique;
     var obValue=eval("("+value+")");
     var obSeries=eval("("+series+")");
 	
-	
-	
-	var data = [
-	            [[55, 1], [35, 2], [53, 3], [10, 4], [36, 5]],
-	            [[4, 1], [4, 2], [3, 3], [5, 4], [7, 5]],
-	            [[5, 1], [11, 2], [4, 3], [7, 4], [28, 5]]
-	            ];
 	
 	
 
@@ -149,4 +207,5 @@ var barChartHorizontal = function(chartId,data,option){
 		        },
 	        });
 	        $(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
+	        
 	};
