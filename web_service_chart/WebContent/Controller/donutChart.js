@@ -26,10 +26,11 @@ var donutChart=function(chartId,data,option){
           	  show: true,
           	  formatString:'%s %d', 
           	  tooltipLocation:'sw', 
-          	  useAxesFormatters:false
+          	  useAxesFormatters:false,
+          	 tooltipContentEditor:tooltipContentEditorByCate
           	},
 		    legend: { show:true, location: option['location'], placement :option['placement'] }
 		  });
-		  $(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
+		  //$(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
 	};
 	

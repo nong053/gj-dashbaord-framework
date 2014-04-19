@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//WebContent/Model/barChartMutiSeries.jsp=UTF-8
 encoding//WebContent/Model/mapThProvince.jsp=UTF-8
+encoding//WebContent/Model/mapThRegionProvince.jsp=UTF-8
 encoding//src/com/goingjesse/chart/service/connectionJNDI.java=UTF-8
 encoding/<project>=UTF-8

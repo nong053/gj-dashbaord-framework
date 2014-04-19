@@ -58,7 +58,7 @@ var barChart=function(chartId,data,option){
 		});
 		series+="]";
 		
-		
+		/*
 		var value="";
 		value+="[[";
 		var cateLength=cateArrayUnique.length-1;
@@ -86,7 +86,79 @@ var barChart=function(chartId,data,option){
 			value+="]";
 		//alert(value);
 		
-	
+	*/
+		
+
+		var cateLength=cateArrayUnique.length-1;
+		
+		var slotArray= new Array();//get array all
+		var slotArray2= new Array();//get array for data is not empty
+		
+		for(var i=0;i<seriesArrayUnique.length;i++){
+			
+			
+			slotArray[i] = new Array();
+			slotArray2[i] = new Array();
+			
+			
+			for(var j=0;j<cateArrayUnique.length;j++){
+				slotArray[i][j]=cateArrayUnique[j];
+				//alert(cateArrayUnique[j]);
+				
+				$.each(data,function(index,indexEntry){
+					if((cateArrayUnique[j]==indexEntry[0])&&(seriesArrayUnique[i]==indexEntry[1])){
+						//alert(cateArrayUnique[j]+"-"+indexEntry[2]);
+						slotArray2[i][j]=indexEntry[2];
+
+					}
+					
+				});
+
+			}
+
+		}
+
+		var value="";
+		value+="[[";
+		var checkUndefinedValue=0;
+		//manage import data value  and check undefined value
+		for(var i=0;i<slotArray.length;i++){
+					//alert(slotArray[i]);
+				for(var j=0;j<slotArray[i].length;j++){
+					if(slotArray2[i][j]==undefined){
+						checkUndefinedValue=0; 
+					}else{
+						checkUndefinedValue=slotArray2[i][j];
+					}
+
+					
+					if(i==0){
+						if(j==0){
+						value+=+checkUndefinedValue;
+						}else{
+						value+=","+checkUndefinedValue;	
+						}
+					}else{
+						if(cateLength==cateArrayUnique.length-1){
+							value+=",["+checkUndefinedValue;
+						}else{
+							value+=","+checkUndefinedValue;
+						}
+						
+					}
+					
+					if(cateLength==0){
+						value+="]";
+						cateLength=cateArrayUnique.length;
+					}
+					cateLength--;
+					
+					
+				}
+			
+		}
+		value+="]";
+		
 	    
 	    // Can specify a custom tick Array.
 	    // Ticks should match up one for each y value (category) in the series.
@@ -123,7 +195,7 @@ var barChart=function(chartId,data,option){
                 tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
                 tickOptions: {
                   angle: option['cateRotate'],
-                  fontSize: '10pt'
+                  fontSize: option['fontSize']
                 }
             },
 	        legend:{ 
@@ -142,7 +214,10 @@ var barChart=function(chartId,data,option){
 	            // Use a category axis on the x axis and use our custom ticks.
 	            xaxis: {
 	                renderer: $.jqplot.CategoryAxisRenderer,
-	                ticks: ticks
+	                ticks: ticks,
+	                pad: 0,
+               
+                  
 	            },
 	            // Pad the y axis just a little so bars can get close to, but
 	            // not touch, the grid boundaries.  1.2 is the default padding.
@@ -161,7 +236,7 @@ var barChart=function(chartId,data,option){
 
 	    });
 	    
-	    $(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
+	    //$(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
 	    
 	};
 	  

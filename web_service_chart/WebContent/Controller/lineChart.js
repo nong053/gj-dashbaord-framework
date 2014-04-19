@@ -59,7 +59,7 @@ var lineChart=function(chartId,data,option){
 		});
 		series+="]";
 		
-		
+		/*
 		var value="";
 		value+="[[";
 		var cateLength=cateArrayUnique.length-1;
@@ -86,6 +86,77 @@ var lineChart=function(chartId,data,option){
 			});
 			value+="]";
 		//alert(value);
+		*/
+		//check value is empty is set 0
+		var cateLength=cateArrayUnique.length-1;
+		
+		var slotArray= new Array();//get array all
+		var slotArray2= new Array();//get array for data is not empty
+		
+		for(var i=0;i<seriesArrayUnique.length;i++){
+			
+			
+			slotArray[i] = new Array();
+			slotArray2[i] = new Array();
+			
+			
+			for(var j=0;j<cateArrayUnique.length;j++){
+				slotArray[i][j]=cateArrayUnique[j];
+				//alert(cateArrayUnique[j]);
+				
+				$.each(data,function(index,indexEntry){
+					if((cateArrayUnique[j]==indexEntry[0])&&(seriesArrayUnique[i]==indexEntry[1])){
+						//alert(cateArrayUnique[j]+"-"+indexEntry[2]);
+						slotArray2[i][j]=indexEntry[2];
+
+					}
+					
+				});
+
+			}
+
+		}
+
+		var value="";
+		value+="[[";
+		var checkUndefinedValue=0;
+		//manage import data value  and check undefined value
+		for(var i=0;i<slotArray.length;i++){
+					//alert(slotArray[i]);
+				for(var j=0;j<slotArray[i].length;j++){
+					if(slotArray2[i][j]==undefined){
+						checkUndefinedValue=0; 
+					}else{
+						checkUndefinedValue=slotArray2[i][j];
+					}
+
+					
+					if(i==0){
+						if(j==0){
+						value+=+checkUndefinedValue;
+						}else{
+						value+=","+checkUndefinedValue;	
+						}
+					}else{
+						if(cateLength==cateArrayUnique.length-1){
+							value+=",["+checkUndefinedValue;
+						}else{
+							value+=","+checkUndefinedValue;
+						}
+						
+					}
+					
+					if(cateLength==0){
+						value+="]";
+						cateLength=cateArrayUnique.length;
+					}
+					cateLength--;
+					
+					
+				}
+			
+		}
+		value+="]";
 		
 	
 	    
@@ -120,7 +191,13 @@ var lineChart=function(chartId,data,option){
 	                    }
 	                 }, 
 		      axesDefaults: {
-		        labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+		    	
+		        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+		        tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+		        tickOptions: {
+	                  angle: option['cateRotate'],
+	                  fontSize: option['fontSize']
+	                }
 		      },
 		      // An axes object holds options for all axes.
 		      // Allowable axes are xaxis, x2axis, yaxis, y2axis, y3axis, ...
@@ -129,7 +206,8 @@ var lineChart=function(chartId,data,option){
 		        // options for each axis are specified in seperate option objects.
 		         xaxis: {
 	                renderer: $.jqplot.CategoryAxisRenderer,
-	                ticks: ticks
+	                ticks: ticks,
+	                pad: 0,
 	            },
 		        yaxis: {
 		          //label: "Y Axis"
@@ -140,5 +218,5 @@ var lineChart=function(chartId,data,option){
 		            tooltipContentEditor:tooltipContentEditor
 		        }
 		    });
-		 $(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
+		 //$(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
 	};

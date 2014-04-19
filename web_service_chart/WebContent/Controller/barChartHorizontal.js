@@ -59,7 +59,7 @@ var barChartHorizontal = function(chartId,data,option){
 				if((cateArrayUnique[j]==indexEntry[0])&&(seriesArrayUnique[i]==indexEntry[1])){
 					//alert(cateArrayUnique[j]+"-"+indexEntry[2]);
 					slotArray2[i][j]=indexEntry[2];
-					
+
 				}
 				
 			});
@@ -186,7 +186,8 @@ var barChartHorizontal = function(chartId,data,option){
 	                xaxis: {
 	                    renderer: $.jqplot.LogAxisRenderer,
 	                    showTicks: false,
-	                    drawMajorGridlines: false
+	                    drawMajorGridlines: false,
+	                    pad: 0,
 	                },
 	                yaxis: {
 	                    renderer: $.jqplot.CategoryAxisRenderer,
@@ -194,7 +195,8 @@ var barChartHorizontal = function(chartId,data,option){
 	                        tickRenderer: $.jqplot.AxisTickRenderer,
 	                        tickOptions: {
 	                            mark: null,
-	                            fontSize: 14
+	                            angle: option['cateRotate'],
+	                            fontSize: option['fontSize']
 	                        }
 	                    },
 	                    ticks: ticks
@@ -206,6 +208,6 @@ var barChartHorizontal = function(chartId,data,option){
 		            tooltipContentEditor:tooltipContentEditor
 		        },
 	        });
-	        $(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
+	        //$(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
 	        
 	};

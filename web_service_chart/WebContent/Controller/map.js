@@ -25,6 +25,9 @@ var map = function(mapId,data,option){
 		$("#"+mapId).vectorMap({
 			  map:option['mapType'],
 			  backgroundColor: "transparent",
+			  markerStyle: option['markerStyle'],
+			  markers: option['markers'], 
+		
 			  series: {
 			    regions: [{
 			      values: mapDataObj,

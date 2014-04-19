@@ -38,10 +38,12 @@ font:Tahoma 13px;
 <script type="text/javascript" src="../libraryChart/jqplot/plugins/jqplot.meterGaugeRenderer.min.js"></script>
 <script type="text/javascript" src="../libraryChart/jquery-jvectormap/jquery-jvectormap-th_regions-mill-en.js"></script>
 <script type="text/javascript" src="../libraryChart/jquery-jvectormap/jquery-jvectormap-th-mill-th.js"></script>
+<script type="text/javascript" src="../libraryChart/jquery-jvectormap/jquery-jvectormap-th-region-mill-th.js"></script>
+<script type="text/javascript" src="../libraryChart/jquery-jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
 <script type="text/javascript" src="../libraryChart/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
 <script type="text/javascript" src="../libraryChart/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
 <script type="text/javascript" src="../libraryChart/jqplot/plugins/jqplot.highlighter.js"></script>
-
 
 
 <!--  library  chart start -->
@@ -87,7 +89,10 @@ font:Tahoma 13px;
 <button id="btngaugeChart">gaugeChart</button>
 <button id="btnMapRegion">MapRegion</button>
 <button id="btnMapProvince">MapProvince</button>
+<button id="btnMapRegionByProvince">MapRegionByProvince</button>
+<button id="btnMapWorld">MapWorld</button>
 <button id="btnTable">Table</button>
+
 
 </body>
 </html>
