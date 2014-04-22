@@ -253,10 +253,12 @@ var barLineChart=function(chartId,data,option){
     	            axes: {
     	                 xaxis: {
     	                    renderer: $.jqplot.CategoryAxisRenderer,
-    	                    ticks: cate,                       
+    	                    ticks: cate,
+    	                    pad: 0,
     	                },
     	                yaxis: {
-    	                    tickOptions: { showMark: false, formatString: "%d" },                       
+    	                    tickOptions: { showMark: false, formatString: "%d" },
+    	                    pad: 0,
     	                },
     	            },
     	            axesDefaults: {

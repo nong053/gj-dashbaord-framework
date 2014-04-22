@@ -211,6 +211,7 @@ var lineChart=function(chartId,data,option){
 	            },
 		        yaxis: {
 		          //label: "Y Axis"
+		        	pad: 0,
 		        }
 		      },
 		      highlighter:{

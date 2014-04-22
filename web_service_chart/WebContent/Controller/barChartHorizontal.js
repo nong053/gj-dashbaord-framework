@@ -199,6 +199,7 @@ var barChartHorizontal = function(chartId,data,option){
 	                            fontSize: option['fontSize']
 	                        }
 	                    },
+	                    pad: 0,
 	                    ticks: ticks
 	                }
 	            },

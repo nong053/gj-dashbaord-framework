@@ -1,6 +1,7 @@
 var option = new Array();
 var theme=["#007BC3", "#76B800", "#FFA500","#EF4C00","#A52A2A","#4682b4"];
 option['fontSize']="13px";
+option['tooltipTextColor']='white';
  
 function tooltipContentEditorByCate(str, seriesIndex, pointIndex, plot) {
     // display series_label, x-axis_tick, y-axis value
@@ -28,14 +29,19 @@ Array.prototype.getUnique = function(){
 	   return a;
 	}
 //Array Unigue end
-var getCate = function(paramUrl,pointIndex){
+var getCate = function(paramUrl,pointIndex,option){
+	
+	//var param = eval("("+option['param']+")");
+	var param=option['param'];
 	var cateName="";
 	$.ajax({
 		url:paramUrl, 
 		type:"get",
 		dataType:"json",
+		data:param,
 		async:false,
 		success:function(data){
+			//cateName=data;
 			var cateArray= new Array();
 			$.each(data,function(index,indexEntry){
 				//alert(indexEntry[2]);
@@ -46,15 +52,17 @@ var getCate = function(paramUrl,pointIndex){
 			cateName= cateArrayUnique[pointIndex];
 		}
 	 });
+	
 	return cateName;
 };
 
-var getSeries = function(paramUrl,seriesIndex){
+var getSeries = function(paramUrl,seriesIndex,option){
 	var seriesName="";
 	$.ajax({
 		url:paramUrl, 
 		type:"get",
 		dataType:"json",
+		data:option['param'],
 		async:false,
 		success:function(data){
 				

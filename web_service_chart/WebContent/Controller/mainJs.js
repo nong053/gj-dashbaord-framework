@@ -45,9 +45,16 @@ $(document).ready(function(){
 				
 			   //bind function click here start.
 				 $('#chart').bind('jqplotDataClick',
-		            function (ev, seriesIndex, pointIndex, data) {					
-					 console.log(getCate("../Model/barChart.jsp",pointIndex)); 
-					 console.log(getSeries("../Model/barChart.jsp",seriesIndex)); 
+		            function (ev, seriesIndex, pointIndex, data) {	
+					 
+					option=[];
+					option['param']={"param1":"1","param2":'2'};
+					
+					var cateName= getCate("../Model/barChart.jsp",pointIndex,option);
+					 console.log(cateName);
+					 
+					 //console.log(getCate("../Model/barChart.jsp",pointIndex)); 
+					 //console.log(getSeries("../Model/barChart.jsp",seriesIndex)); 
 		            }
 		        );
 				//bind function click here end.
@@ -130,7 +137,7 @@ $(document).ready(function(){
 				option['cateRotate']=-30;
 				option['theme']=theme;
 				option['title']="ชื่อกราฟ";
-				option['tooltipTextColor']='white';
+				option['tooltipTextColor']='red';
 				option['location']='e';
 				option['placement']='outside';
 				option['title']="ชื่อกราฟ";
@@ -218,7 +225,7 @@ $(document).ready(function(){
 				option['cateRotate']=0;
 				option['theme']=theme;
 				option['title']="Graph BarlineChart";
-				option['tooltipTextColor']='white';
+				option['tooltipTextColor']='red';
 				option['location']='e';
 				option['placement']='outside';
 				option['title']="ชื่อกราฟ";
