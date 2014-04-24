@@ -40,46 +40,69 @@ var table=function(tableId,data){
 */
 
 var table=function(tableId,data,option){
+	
+	
+	
+	
+	
 	//alert("Create Table");
-	var htmlTable="";
-	htmlTable+="<table id=\"table"+tableId+"\">";
-	htmlTable+="<colgroup>";
-    for(var i=0;i<option['colsWidth'].length;i++){
-    	htmlTable+="<col style=\"width:"+option['colsWidth'][i]+"\" />";
-	}
-    htmlTable+="</colgroup>";
-    
-	htmlTable+="<thead>";
-	for(var i=0;i<option['title'].length;i++){
-		
-		htmlTable+="<th data-field=column"+i+"><b>"+option['title'][i]+"</b></th>";
-		
-	}
-	htmlTable+="</thead>";
-	htmlTable+="<body>";
-	$.each(data,function(index,indexEntry){
-		
+	
+		var htmlTable="";
+		htmlTable+="<table id=\"table"+tableId+"\">";
+		htmlTable+="<colgroup>";
+	    for(var i=0;i<option['colsWidth'].length;i++){
+	    	htmlTable+="<col style=\"width:"+option['colsWidth'][i]+"\" />";
+		}
+	    htmlTable+="</colgroup>";
+	    
+		htmlTable+="<thead>";
+		for(var i=0;i<option['title'].length;i++){
 			
-			htmlTable+="<tr>";
-			for(var i=0;i<indexEntry.length;i++){
-				htmlTable+="<td>"+indexEntry[i]+"</td>";
-			}
-			htmlTable+="</tr>";
+			htmlTable+="<th data-field=column"+i+"><b>"+option['title'][i]+"</b></th>";
 			
-		
-
-	});
-	htmlTable+="</tbody>";
-	htmlTable+="</table>";
-
+		}
+		htmlTable+="</thead>";
+		htmlTable+="<body>";
+		$.each(data,function(index,indexEntry){
+			
+				
+				htmlTable+="<tr>";
+				if(option['runNumber']){
+				htmlTable+="<td>"+(index+1)+"</td>";
+				}
+				for(var i=0;i<indexEntry.length;i++){
+					htmlTable+="<td>"+indexEntry[i]+"</td>";
+				}
+				htmlTable+="</tr>";
+				
+			
+	
+		});
+		htmlTable+="</tbody>";
+		htmlTable+="</table>";
+	
 	//console.log(data); 
 	//alert(htmlTable);
 	$("#"+tableId).html(htmlTable);
-    $("#table"+tableId).kendoGrid({
+   
+	$("#table"+tableId).kendoGrid({
         height: option['height'],
         sortable: true
     });
     
-	$(".k-grid td").css({"padding":"0px","padding-left":"2px"});
+	$(".k-grid td").css({"padding":"0px","padding-left":"3px","padding-right":"3px"});
+	 $("#table"+tableId+" tbody tr").each(function(){
+			
+			for(var i=0;i<option['contentType'].length;i++){
+				if(option['contentType'][i]=="String"){
+					$("td",this).eq(i).css({"text-align":"left"}); 
+				}else if(option['contentType'][i]=="Number"){
+					$("td",this).eq(i).css({"text-align":"right"}); 
+				}else{
+					$("td",this).eq(i).css({"text-align":"center"}); 
+				}
+			}
+			
+	 });
 	
 };

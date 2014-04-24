@@ -521,9 +521,11 @@ $(document).ready(function(){
 				console.log(data);
 				option=[];
 				option['theme']=theme;
-				option['title']=["หัวข้อ","Admission","test2"];
+				option['title']=["ลำดับ","หัวข้อ","Admission","test2"];
+				option['contentType']=["","String","Number","Number"];
 				option['height']='430';
-				option['colsWidth']=["200px","120px","130px"];
+				option['colsWidth']=["80px","200px","120px","130px"];
+				option["runNumber"]=true;
 				table("chart",data,option);	
 				
 				
