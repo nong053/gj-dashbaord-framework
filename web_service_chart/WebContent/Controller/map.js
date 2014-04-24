@@ -42,9 +42,17 @@ var map = function(mapId,data,option){
 					initial: {fill: option['initial']},
 					selected: {fill: option['selected']}
 				},
+				onRegionClick:function (event, code){
+					//alert(code);
+					
+					//return code;
+					$("#mapCode").remove();
+					$("body").append("<div id=\"mapCode\" style=\"display:none\">"+code+"</div>");
+				}
 			});
 		$(".jvectormap-label").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
 		 
 	
 
 };
+

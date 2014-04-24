@@ -422,6 +422,9 @@ $(document).ready(function(){
 				option['scale']="['#C8EEFF', '#0071A4']";
 				
 				map("chart",data,option);	
+				$(".jvectormap-element").on("click",function(){
+					alert($("#mapCode").text());
+				});
 			}
 		});
 		
@@ -446,6 +449,9 @@ $(document).ready(function(){
 				option['scale']="['#C8EEFF', '#0071A4']";
 				
 				map("chart",data,option);	
+				$(".jvectormap-element").on("click",function(){
+					alert($("#mapCode").text());
+				});
 			}
 		});
 		
@@ -501,9 +507,13 @@ $(document).ready(function(){
 				            {latLng: [-20.2, 57.5], name: 'Mauritius'},
 				            {latLng: [26.02, 50.55], name: 'Bahrain'},
 				            {latLng: [0.33, 6.73], name: 'São Tomé and Príncipe'}
-				          ],
+				          ];
 				
-				map("chart",data,option);	
+				map("chart",data,option);
+				$(".jvectormap-element").on("click",function(){
+					alert($("#mapCode").text());
+				});
+				 
 			}
 		});
 		
