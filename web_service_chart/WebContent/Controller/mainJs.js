@@ -514,14 +514,18 @@ $(document).ready(function(){
 	
 	$("#btnTable").click(function(){
 		$.ajax({
-			url:"../Model/table.jsp",
+			url:"../Model/table.txt",
 			type:"get",
 			dataType:"json",
 			success:function(data){
+				console.log(data);
 				option=[];
 				option['theme']=theme;
+				option['title']=["หัวข้อ","Admission","test2"];
+				option['height']='430';
+				option['colsWidth']=["200px","120px","130px"];
+				table("chart",data,option);	
 				
-				table("chart",data);	
 				
 			}
 		});
