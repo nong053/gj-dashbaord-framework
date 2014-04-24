@@ -422,6 +422,7 @@ $(document).ready(function(){
 				option['scale']="['#C8EEFF', '#0071A4']";
 				
 				map("chart",data,option);	
+				/*clickable*/
 				$(".jvectormap-element").on("click",function(){
 					alert($("#mapCode").text());
 				});
@@ -449,8 +450,99 @@ $(document).ready(function(){
 				option['scale']="['#C8EEFF', '#0071A4']";
 				
 				map("chart",data,option);	
+				var provinceRegion=new Array();
+				//Map Province,Region Start
+				
+				
+				provinceRegion["TH-1"]="TH-BK";
+				provinceRegion["TH-60"]="TH-XC";
+				provinceRegion["TH-24"]="TH-PM";
+				provinceRegion["TH-29"]="TH-PM";
+				provinceRegion["TH-33"]="TH-XC";
+				provinceRegion["TH-72"]="TH-XC";
+				provinceRegion["TH-52"]="TH-XC";
+				provinceRegion["TH-65"]="TH-XC";
+				provinceRegion["TH-10"]="TH-XC";
+				provinceRegion["TH-64"]="TH-XC";
+				provinceRegion["TH-9"]="TH-XE";
+				provinceRegion["TH-50"]="TH-XE";
+				provinceRegion["TH-7"]="TH-XE";
+				provinceRegion["TH-16"]="TH-XE";
+				provinceRegion["TH-8"]="TH-XE";
+				provinceRegion["TH-31"]="TH-XE";
+				provinceRegion["TH-18"]="TH-XE";
+				provinceRegion["TH-63"]="TH-XE";
+				provinceRegion["TH-21"]="TH-XNE";
+				provinceRegion["TH-28"]="TH-XNE";
+				provinceRegion["TH-69"]="TH-XNE";
+				provinceRegion["TH-56"]="TH-XNE";
+				provinceRegion["TH-76"]="TH-XNE";
+				provinceRegion["TH-47"]="TH-XNE";
+				provinceRegion["TH-11"]="TH-XNE";
+				provinceRegion["TH-77"]="TH-XNE";
+				provinceRegion["TH-27"]="TH-XNE";
+				provinceRegion["TH-71"]="TH-XNE";
+				provinceRegion["TH-6"]="TH-XNE";
+				provinceRegion["TH-73"]="TH-XNE";
+				provinceRegion["TH-55"]="TH-XNE";
+				provinceRegion["TH-70"]="TH-XNE";
+				provinceRegion["TH-43"]="TH-XNE";
+				provinceRegion["TH-48"]="TH-XNE";
+				provinceRegion["TH-4"]="TH-XNE";
+				provinceRegion["TH-57"]="TH-XNE";
+				provinceRegion["TH-20"]="TH-XNE";
+				provinceRegion["TH-44"]="TH-XNE";
+				provinceRegion["TH-14"]="TH-XN";
+				provinceRegion["TH-54"]="TH-XN";
+				provinceRegion["TH-53"]="TH-XN";
+				provinceRegion["TH-75"]="TH-XN";
+				provinceRegion["TH-40"]="TH-XN";
+				provinceRegion["TH-26"]="TH-XN";
+				provinceRegion["TH-41"]="TH-XN";
+				provinceRegion["TH-13"]="TH-XN";
+				provinceRegion["TH-45"]="TH-XN";
+				provinceRegion["TH-23"]="TH-XN";
+				provinceRegion["TH-74"]="TH-XN";
+				provinceRegion["TH-5"]="TH-XN";
+				provinceRegion["TH-17"]="TH-XN";
+				provinceRegion["TH-66"]="TH-XN";
+				provinceRegion["TH-37"]="TH-XN";
+				provinceRegion["TH-36"]="TH-XN";
+				provinceRegion["TH-39"]="TH-XN";
+				provinceRegion["TH-51"]="TH-XW";
+				provinceRegion["TH-3"]="TH-XW";
+				provinceRegion["TH-67"]="TH-XW";
+				provinceRegion["TH-19"]="TH-PM";
+				provinceRegion["TH-62"]="TH-PM";
+				provinceRegion["TH-61"]="TH-XW";
+				provinceRegion["TH-38"]="TH-XW";
+				provinceRegion["TH-30"]="TH-XW";
+				provinceRegion["TH-22"]="TH-XS";
+				provinceRegion["TH-2"]="TH-XS";
+				provinceRegion["TH-34"]="TH-XS";
+				provinceRegion["TH-42"]="TH-XS";
+				provinceRegion["TH-68"]="TH-XS";
+				provinceRegion["TH-49"]="TH-XS";
+				provinceRegion["TH-12"]="TH-XS";
+				provinceRegion["TH-58"]="TH-XS";
+				provinceRegion["TH-59"]="TH-XS";
+				provinceRegion["TH-15"]="TH-XS";
+				provinceRegion["TH-35"]="TH-XS";
+				provinceRegion["TH-32"]="TH-XS";
+				provinceRegion["TH-46"]="TH-XS";
+				provinceRegion["TH-25"]="TH-XS";
+
+				
+				//Map Province Region End
+				
 				$(".jvectormap-element").on("click",function(){
-					alert($("#mapCode").text());
+					var provinceCode=$("#mapCode").text();
+						
+						alert(provinceRegion[""+provinceCode+""]);
+							
+						
+						
+					
 				});
 			}
 		});
