@@ -79,3 +79,26 @@ var getSeries = function(paramUrl,seriesIndex,option){
 	 });
 	return seriesName;
 };
+var getSeriesCode = function(paramUrl,seriesIndex,option){
+	var seriesName="";
+	$.ajax({
+		url:paramUrl, 
+		type:"get",
+		dataType:"json",
+		data:option['param'],
+		async:false,
+		success:function(data){
+				
+				var seriesArray=new Array();
+				$.each(data,function(index,indexEntry){
+
+					seriesArray[index]=indexEntry[3];
+				});
+				seriesArrayUnique=seriesArray.getUnique();
+				
+			seriesName= seriesArrayUnique[seriesIndex];
+			
+		}
+	 });
+	return seriesName;
+};
