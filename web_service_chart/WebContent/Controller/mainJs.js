@@ -437,6 +437,7 @@ $(document).ready(function(){
 		//th_regions_mill_en
 		
 		$.ajax({
+			
 			url:"../Model/mapThRegionProvince.jsp",
 			type:"get",
 			dataType:"json",
