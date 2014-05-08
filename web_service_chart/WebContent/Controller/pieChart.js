@@ -49,6 +49,6 @@ var pieChart = function(chartId,data,option){
 	              }
 	              
 	            );
-	            
+	            $("#"+chartId+">.jqplot-data-label").css({"font-size":option['pointLabelsFont']});
 	            //$(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
 };

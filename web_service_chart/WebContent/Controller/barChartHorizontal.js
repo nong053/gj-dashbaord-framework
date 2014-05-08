@@ -171,8 +171,9 @@ var barChartHorizontal = function(chartId,data,option){
 	                    barWidth: option['barWidth']
 	                },
 	                pointLabels: {
-	                    show: true,
-	                    formatString: '%d',
+	                    show: option['pointLabels'],
+	                    //formatString: '%d',
+	                    tickOptions: {formatString:'%d', formatter: $.jqplot.euroFormatter},
 	                    hideZeros: true
 	                }
 	            },
@@ -185,9 +186,10 @@ var barChartHorizontal = function(chartId,data,option){
 	            axes: {
 	                xaxis: {
 	                    renderer: $.jqplot.LogAxisRenderer,
-	                    showTicks: false,
-	                    drawMajorGridlines: false,
-	                    pad: 0,
+	                    showTicks: true,
+	                    drawMajorGridlines: true,
+	                    tickOptions: {formatString:'%d', formatter: $.jqplot.euroFormatter},
+	                    //pad: 1.5,
 	                },
 	                yaxis: {
 	                    renderer: $.jqplot.CategoryAxisRenderer,
@@ -196,11 +198,14 @@ var barChartHorizontal = function(chartId,data,option){
 	                        tickOptions: {
 	                            mark: null,
 	                            angle: option['cateRotate'],
-	                            fontSize: option['fontSize']
+	                            fontSize: option['fontSize'],
+	                            formatString:'%d', formatter: $.jqplot.euroFormatter,
 	                        }
 	                    },
-	                    pad: 0,
-	                    ticks: ticks
+	                    
+	                    //pad: 1.05,
+	                    ticks: ticks,
+	                    
 	                }
 	            },
 	            
@@ -209,6 +214,9 @@ var barChartHorizontal = function(chartId,data,option){
 		            tooltipContentEditor:tooltipContentEditor
 		        },
 	        });
+	       
+	        $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont']});
+	        $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
 	        //$(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
 	        
 	};

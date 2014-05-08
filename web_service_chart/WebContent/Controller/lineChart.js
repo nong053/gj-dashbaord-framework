@@ -197,7 +197,8 @@ var lineChart=function(chartId,data,option){
 		        tickOptions: {
 	                  angle: option['cateRotate'],
 	                  fontSize: option['fontSize']
-	                }
+	                },
+	                
 		      },
 		      // An axes object holds options for all axes.
 		      // Allowable axes are xaxis, x2axis, yaxis, y2axis, y3axis, ...
@@ -207,17 +208,26 @@ var lineChart=function(chartId,data,option){
 		         xaxis: {
 	                renderer: $.jqplot.CategoryAxisRenderer,
 	                ticks: ticks,
-	                pad: 0,
+	                pad: 1.5,
 	            },
 		        yaxis: {
 		          //label: "Y Axis"
+		        	tickOptions: {formatString:'%d', formatter: $.jqplot.euroFormatter},
 		        	pad: 0,
 		        }
 		      },
+		      seriesDefaults:{
+		          
+		            pointLabels: { show: option['pointLabels'] },
+		            
+		            
+		        },
 		      highlighter:{
 		            show:true,
 		            tooltipContentEditor:tooltipContentEditor
 		        }
 		    });
+		 $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont']});
+		 $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
 		 //$(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
 	};

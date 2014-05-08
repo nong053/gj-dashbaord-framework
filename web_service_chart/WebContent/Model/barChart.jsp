@@ -9,7 +9,7 @@ json+="[\"Agust\",\"Hotel\",\"1000\"],[\"Agust\",\"Event Regristration\",\"820\"
 */
 
 
-json+="[[\"May\",\"Hotel\",\"200\"],[\"June\",\"Hotel\",\"600\"],[\"Junly\",\"Hotel\",\"700\"],[\"Agust\",\"Hotel\",\"1000\"],[\"Octember\",\"Hotel\",\"1000\"]]";
+json+="[[\"May\",\"Hotel\",\"200\",\"1\"],[\"June\",\"Hotel\",\"600\",\"1\"],[\"Junly\",\"Hotel\",\"700\",\"1\"],[\"Agust\",\"Hotel\",\"1000\",\"1\"],[\"Octember\",\"Hotel\",\"1000\",\"1\"]]";
 out.println(json);
 
 

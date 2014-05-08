@@ -35,6 +35,8 @@ font:Tahoma 13px;
 <script type="text/javascript" src="../libraryChart/jqplot/plugins/jqplot.pointLabels.min.js" type="text/javascript" language="javascript"></script>
 <script type="text/javascript" src="../libraryChart/jqplot/plugins/jqplot.pieRenderer.min.js"></script>
 <script type="text/javascript" src="../libraryChart/jqplot/plugins/jqplot.donutRenderer.min.js"></script>
+<script type="text/javascript" src="../libraryChart/jqplot/plugins/jqplot.euroFormatter.js"></script>
+
 <script type="text/javascript" src="../libraryChart/jqplot/plugins/jqplot.meterGaugeRenderer.min.js"></script>
 <script type="text/javascript" src="../libraryChart/jquery-jvectormap/jquery-jvectormap-th_regions-mill-en.js"></script>
 <script type="text/javascript" src="../libraryChart/jquery-jvectormap/jquery-jvectormap-th-mill-th.js"></script>

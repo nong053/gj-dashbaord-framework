@@ -254,18 +254,19 @@ var barLineChart=function(chartId,data,option){
     	                 xaxis: {
     	                    renderer: $.jqplot.CategoryAxisRenderer,
     	                    ticks: cate,
-    	                    pad: 0,
+    	                    //pad: 1.5,
     	                },
     	                yaxis: {
-    	                    tickOptions: { showMark: false, formatString: "%d" },
-    	                    pad: 0,
+    	                    tickOptions: { showMark: false, formatString: "%d" , formatter: $.jqplot.euroFormatter},
+    	                    //pad: -2,
     	                },
     	            },
     	            axesDefaults: {
     	                tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
     	                tickOptions: {
     	                  angle: option['cateRotate'],
-    	                  fontSize: '10pt'
+    	                  fontSize: '10pt',
+    	                 
     	                }
     	            },
     	            seriesColors: option['theme'],
@@ -290,8 +291,10 @@ var barLineChart=function(chartId,data,option){
     	                rendererOptions:{
     	                   barPadding: 0,
     	                   barMargin: 10,
-    	                   barWidth: 25,
-    	               }
+    	                   barWidth: option['barWidth'],
+    	                      
+    	               },
+    	               pointLabels: { show: option['pointLabels'] },
 
     	            }, 
     	            highlighter:{
@@ -310,10 +313,10 @@ var barLineChart=function(chartId,data,option){
  	                 xaxis: {
  	                    renderer: $.jqplot.CategoryAxisRenderer,
  	                    ticks: cate, 
- 	                    pad: 0,
+ 	                    //pad: 0,
  	                },
  	                yaxis: {
- 	                    tickOptions: { showMark: false, formatString: "%d" },                       
+ 	                    tickOptions: { showMark: false, formatString: "%d", formatter: $.jqplot.euroFormatter },                       
  	                },
  	            },
  	            axesDefaults: {
@@ -342,8 +345,10 @@ var barLineChart=function(chartId,data,option){
  	                rendererOptions:{
  	                   barPadding: 0,
  	                   barMargin: 10,
- 	                   barWidth: 25,
- 	               }
+ 	                   barWidth: option['barWidth'],
+ 	 	              
+ 	               },
+ 	              pointLabels: { show: option['pointLabels'] },
 
  	            }, 
  	            highlighter:{
@@ -352,12 +357,14 @@ var barLineChart=function(chartId,data,option){
  		        },
  	        };
  	        return optionsObj;
+ 	        
  	    }
     	 
  	   // $(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
     
 	//Example http://stackoverflow.com/questions/9775772/jqplot-show-trendline-over-barchart
-	
+    	 $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont']});
+    	 $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
 	};
 	
 	

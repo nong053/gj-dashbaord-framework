@@ -23,7 +23,7 @@ $(document).ready(function(){
 	$("#btnBarChart").click(function(){
 
 		$.ajax({
-			url:"../Model/barChart.jsp",
+			url:"../Model/barChart.txt",
 			type:"get",
 			dataType:"json",
 			success:function(data){
@@ -37,6 +37,9 @@ $(document).ready(function(){
 				option['title']="ชื่อกราฟ";
 				option['barWidth']=25;
 				option['fontSize']='14px';
+				option['pointLabels']=false;
+				option['pointLabelsFont']='11px';
+				option['tooltipFontSize']='30px';
 				
 				barChart("chart",data,option);	
 				
@@ -54,7 +57,7 @@ $(document).ready(function(){
 					 console.log(cateName);
 					 
 					 //console.log(getCate("../Model/barChart.jsp",pointIndex)); 
-					 //console.log(getSeries("../Model/barChart.jsp",seriesIndex)); 
+					 console.log(getSeriesCode("../Model/barChart.txt",seriesIndex,option)); 
 		            }
 		        );
 				//bind function click here end.
@@ -78,6 +81,8 @@ $(document).ready(function(){
 				option['location']='e';
 				option['placement']='outside';
 				option['title']="ชื่อกราฟ";
+				option['pointLabels']=true;
+				option['pointLabelsFont']='15px';
 				
 				barChart("chart",data,option);	
 				
@@ -110,6 +115,10 @@ $(document).ready(function(){
 				option['title']="ชื่อกราฟ";
 				option['barWidth']=25;
 				
+				option['pointLabels']=true;
+				option['pointLabelsFont']='20px';
+				option['tooltipFontSize']='30px';
+				
 				barChartHorizontal("chart",data,option);	
 				
 				//bind function click here start.
@@ -141,6 +150,10 @@ $(document).ready(function(){
 				option['location']='e';
 				option['placement']='outside';
 				option['title']="ชื่อกราฟ";
+				
+				
+				option['pointLabels']=true;
+				option['pointLabelsFont']='20px';
 				
 				lineChart("chart",data,option);	
 				//bind function click here start.
@@ -229,6 +242,10 @@ $(document).ready(function(){
 				option['location']='e';
 				option['placement']='outside';
 				option['title']="ชื่อกราฟ";
+				option['pointLabels']=true;
+				option['pointLabelsFont']='16px';
+				option['barWidth']=40;
+				
 				barLineChart("chart",data,option);	
 				
 				/*
@@ -271,6 +288,9 @@ $(document).ready(function(){
 				option['location']='e';
 				option['placement']='outside';
 				option['title']="ชื่อกราฟ";
+				option['pointLabels']=true;
+				option['pointLabelsFont']='16px';
+				
 				barLineChart("chart",data,option);	
 				
 				//bind function click here start.
@@ -306,6 +326,11 @@ $(document).ready(function(){
 				option['placement']='outside';
 				option['barWidth']=7;
 				option['stackSeries']=false;
+				
+				option['pointLabels']=true;
+				option['pointLabelsFont']='20px';
+				
+				
 				barChartHorizontal("chart",data,option);	
 				//alert("hello");
 				
@@ -337,6 +362,9 @@ $(document).ready(function(){
 				option['tooltipTextColor']='white';
 				option['location']='e';
 				option['placement']='outside';
+				option['pointLabels']=true;
+				option['pointLabelsFont']='20px';
+				
 				barChartHorizontal("chart",data,option);
 				
 				//bind function click here start.
@@ -556,7 +584,7 @@ $(document).ready(function(){
 		//th_regions_mill_en
 		
 		$.ajax({
-			url:"../Model/mapThRegionProvince.jsp",
+			url:"../Model/mapWorld.jsp",
 			type:"get",
 			dataType:"json",
 			success:function(data){
@@ -573,6 +601,7 @@ $(document).ready(function(){
 					          stroke: '#383f47'
 					        }
 					      };
+				/*
 				option['markers']=[
 				            {latLng: [41.90, 12.45], name: 'Vatican City'},
 				            {latLng: [43.73, 7.41], name: 'Monaco'},
@@ -601,7 +630,7 @@ $(document).ready(function(){
 				            {latLng: [26.02, 50.55], name: 'Bahrain'},
 				            {latLng: [0.33, 6.73], name: 'São Tomé and Príncipe'}
 				          ];
-				
+				*/
 				map("chart",data,option);
 				$(".jvectormap-element").on("click",function(){
 					alert($("#mapCode").text());

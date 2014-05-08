@@ -1,18 +1,26 @@
 var map = function(mapId,data,option){
 	var scaleObj=eval("("+option['scale']+")");
 	var mapData="";
+	var mapDataColor="";
 	mapData+="{";
+	mapDataColor+="{";
 	$.each(data,function(index,indexEntry){
 		if(index==0){
-		mapData+="\""+indexEntry[0]+"\":"+indexEntry[1]+"";
+		mapData+="\""+indexEntry[0]+"\":\""+indexEntry[1]+"\"";
+		mapDataColor+="\""+indexEntry[0]+"\":\""+indexEntry[2]+"\"";
+
 		}else{
-		mapData+=",\""+indexEntry[0]+"\":"+indexEntry[1]+"";	
+		mapData+=",\""+indexEntry[0]+"\":\""+indexEntry[1]+"\"";
+		mapDataColor+=",\""+indexEntry[0]+"\":\""+indexEntry[2]+"\"";
 		}
 	});
 	mapData+="}";
+	mapDataColor+="}";
 	
 	var mapDataObj=eval("("+mapData+")");
-	
+	var mapDataColorObj=eval("("+mapDataColor+")");
+	console.log(mapDataObj);
+	console.log(mapDataColorObj);
 	/*
 		var mapData = {
 				  "TH-XNE": 16.63,//North East
@@ -27,16 +35,18 @@ var map = function(mapId,data,option){
 			  backgroundColor: "transparent",
 			  markerStyle: option['markerStyle'],
 			  markers: option['markers'], 
-		
+			  
 			  series: {
 			    regions: [{
-			      values: mapDataObj,
-			      scale: scaleObj,
-			      normalizeFunction: 'polynomial'
+			      values: mapDataColorObj,
+			      attribute: "fill",
+			      //scale: scaleObj,
+			      //normalizeFunction: 'polynomial'
 			    }]
 			  },
 			  onRegionLabelShow: function(e, el, code){
-			    el.html(el.html()+' (value - '+mapDataObj[code]+')');
+				//console.log(code);
+			    el.html(el.html()+'-'+mapDataObj[code]);
 			  },
 			  regionStyle: {
 					initial: {fill: option['initial']},

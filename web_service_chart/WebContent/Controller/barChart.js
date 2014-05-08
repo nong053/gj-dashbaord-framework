@@ -169,13 +169,14 @@ var barChart=function(chartId,data,option){
 	    var plot1 = $.jqplot(chartId, obValue, {
 	        // The "seriesDefaults" option is an options object that will
 	        // be applied to all series in the chart.
+	    	
 	    	animate: true,
 	        seriesDefaults:{
 	            renderer:$.jqplot.BarRenderer,
 	            rendererOptions: {fillToZero: true,
 	            				 barWidth: option['barWidth']
 	            				 },
-	            pointLabels: { show: true },
+	            pointLabels: { show: option['pointLabels'] },
 	            
 	            
 	        },
@@ -216,15 +217,23 @@ var barChart=function(chartId,data,option){
 	                renderer: $.jqplot.CategoryAxisRenderer,
 	                ticks: ticks,
 	                pad: 0,
+	                
+	               
                
                   
 	            },
 	            // Pad the y axis just a little so bars can get close to, but
 	            // not touch, the grid boundaries.  1.2 is the default padding.
 	            yaxis: {
-	                pad: 1.05,
-	                tickOptions: {formatString: '%d'}
-	            }
+	            	// rendererOptions: { forceTickAt0: true, forceTickAt100: true },
+	                //pad: -1.5,
+	                //tickOptions: {formatString: '%d'},
+	            	 tickOptions: {formatString:'%d', formatter: $.jqplot.euroFormatter,
+	            		          //fontSize: '20pt'
+	            		        },
+	            	
+	            },
+	           
 	            
 	        },
 	        
@@ -232,10 +241,11 @@ var barChart=function(chartId,data,option){
 	        highlighter:{
 	            show:true,
 	            tooltipContentEditor:tooltipContentEditor
-	        }
-
+	        },
+	       
 	    });
-	    
+	    $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont']});
+	    $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
 	    //$(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
 	    
 	};
