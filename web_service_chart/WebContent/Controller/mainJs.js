@@ -37,9 +37,13 @@ $(document).ready(function(){
 				option['title']="ชื่อกราฟ";
 				option['barWidth']=25;
 				option['fontSize']='14px';
+				//show value in graph
 				option['pointLabels']=false;
+				//font size value in graph
 				option['pointLabelsFont']='11px';
+				//font tooltip size
 				option['tooltipFontSize']='30px';
+				//clickable
 				option['clickable']=true;
 				
 				barChart("chart",data,option);	
@@ -186,6 +190,7 @@ $(document).ready(function(){
 				option['title']="ชื่อกราฟ";
 				option['location']='e';
 				option['placement']='inside';
+				option['showDataLabels']=false;
 				
 				donutChart("chart",data,option);	
 				
@@ -214,6 +219,7 @@ $(document).ready(function(){
 				option['dataLabels']='value';//‘label’, ‘value’, ‘percent’ 	
 				option['tooltipTextColor']='white';
 				option['title']="ชื่อกราฟ";
+				option['showDataLabels']=false;
 				
 				pieChart("chart",data,option);	
 				

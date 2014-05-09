@@ -33,8 +33,7 @@ var barLineChart=function(chartId,data,option){
 			
 			cateArray[index]=indexEntry[0];
 			seriesArray[index]=indexEntry[1];
-			
-			
+
 			
 		});
 		cateArrayUnique=cateArray.getUnique();

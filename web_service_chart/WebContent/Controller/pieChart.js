@@ -34,7 +34,7 @@ var pieChart = function(chartId,data,option){
 	                  rendererOptions: {
 	                    // Put data labels on the pie slices.
 	                    // By default, labels show the percentage of the slice.
-	                    showDataLabels: true,
+	                    showDataLabels: option['showDataLabels'],
 	                    dataLabels: option['dataLabels']
 	                  }
 	                },
