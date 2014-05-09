@@ -258,6 +258,7 @@ var barLineChart=function(chartId,data,option){
     	                yaxis: {
     	                    tickOptions: { showMark: false, formatString: "%d" , formatter: $.jqplot.euroFormatter},
     	                    //pad: -2,
+    	                    min:0
     	                },
     	            },
     	            axesDefaults: {
@@ -315,7 +316,8 @@ var barLineChart=function(chartId,data,option){
  	                    //pad: 0,
  	                },
  	                yaxis: {
- 	                    tickOptions: { showMark: false, formatString: "%d", formatter: $.jqplot.euroFormatter },                       
+ 	                    tickOptions: { showMark: false, formatString: "%d", formatter: $.jqplot.euroFormatter },
+ 	                    min:0
  	                },
  	            },
  	            axesDefaults: {

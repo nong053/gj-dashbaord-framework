@@ -209,11 +209,13 @@ var lineChart=function(chartId,data,option){
 	                renderer: $.jqplot.CategoryAxisRenderer,
 	                ticks: ticks,
 	                pad: 1.5,
+	                min:0
 	            },
 		        yaxis: {
 		          //label: "Y Axis"
 		        	tickOptions: {formatString:'%d', formatter: $.jqplot.euroFormatter},
 		        	pad: 0,
+		        	min:0
 		        }
 		      },
 		      seriesDefaults:{

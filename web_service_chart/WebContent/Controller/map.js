@@ -61,7 +61,9 @@ var map = function(mapId,data,option){
 				}
 			});
 		$(".jvectormap-label").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
-		 
+		if(option['clickable']==true){
+		$(".jvectormap-region").css({"cursor":"pointer"});
+		}
 	
 
 };

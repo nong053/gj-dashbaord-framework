@@ -216,7 +216,8 @@ var barChart=function(chartId,data,option){
 	            xaxis: {
 	                renderer: $.jqplot.CategoryAxisRenderer,
 	                ticks: ticks,
-	                pad: 0,
+	                //pad: 0,
+	                min:0
 	                
 	               
                
@@ -231,6 +232,7 @@ var barChart=function(chartId,data,option){
 	            	 tickOptions: {formatString:'%d', formatter: $.jqplot.euroFormatter,
 	            		          //fontSize: '20pt'
 	            		        },
+	            	 min:0
 	            	
 	            },
 	           
