@@ -370,6 +370,7 @@ var barLineChart=function(chartId,data,option){
  		    	   $('.jqplot-event-canvas').css( 'cursor', 'pointer' );
  		    	});
  	    }
+    	 $("#"+chartId+">.jqplot-series-shadowCanvas").css({"background":"red"});
     	 $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont']});
     	 $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
 	};

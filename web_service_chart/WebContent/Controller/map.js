@@ -47,6 +47,13 @@ var map = function(mapId,data,option){
 			  onRegionLabelShow: function(e, el, code){
 				//console.log(code);
 			    el.html(el.html()+'-'+mapDataObj[code]);
+			    //alert(mapDataColorObj[code]);
+			    if(mapDataColorObj[code]){
+			    	//alert("hello");
+			    	$(".jvectormap-label").css({"background":mapDataColorObj[code],"color":option['tooltipTextColor'],"opacity":"1"});
+			    }else{
+			    	$(".jvectormap-label").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
+			    }
 			  },
 			  regionStyle: {
 					initial: {fill: option['initial']},
@@ -60,7 +67,7 @@ var map = function(mapId,data,option){
 					$("body").append("<div id=\"mapCode\" style=\"display:none\">"+code+"</div>");
 				}
 			});
-		$(".jvectormap-label").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
+		
 		if(option['clickable']==true){
 		$(".jvectormap-region").css({"cursor":"pointer"});
 		}
