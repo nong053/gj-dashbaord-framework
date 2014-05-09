@@ -40,6 +40,7 @@ $(document).ready(function(){
 				option['pointLabels']=false;
 				option['pointLabelsFont']='11px';
 				option['tooltipFontSize']='30px';
+				option['clickable']=true;
 				
 				barChart("chart",data,option);	
 				
