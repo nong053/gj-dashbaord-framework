@@ -34,9 +34,13 @@ function addCommas(nStr)
 
 function tooltipContentEditorByCate(str, seriesIndex, pointIndex, plot) {
     // display series_label, x-axis_tick, y-axis value
-	//console.log(seriesIndex+"="+pointIndex);
+	// console.log(seriesIndex+"="+pointIndex);
+	//console.log(plot.data[seriesIndex][pointIndex]);
+	var cate=plot.data[seriesIndex][pointIndex][0];
+	var vale=plot.data[seriesIndex][pointIndex][1];
+	//console.log(cate);
 	 $(".jqplot-highlighter-tooltip").css({"background":theme[pointIndex],"color":option['tooltipTextColor'],"opacity":"1","z-index":"12999","padding-left":"2px","padding-right":"5px"});
-    return   addCommas(plot.data[seriesIndex][pointIndex]);
+    return   cate+"-"+addCommas(vale);
 }
 
 function tooltipContentEditor(str, seriesIndex, pointIndex, plot) {
