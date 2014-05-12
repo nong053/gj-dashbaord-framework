@@ -252,7 +252,8 @@ $(document).ready(function(){
 				option['pointLabels']=true;
 				option['pointLabelsFont']='16px';
 				option['barWidth']=40;
-				
+				option['background']=true;
+				option['max']=100;
 				barLineChart("chart",data,option);	
 				
 				/*
@@ -337,7 +338,7 @@ $(document).ready(function(){
 				option['pointLabels']=true;
 				option['pointLabelsFont']='20px';
 				
-				
+				max:option['max']=100;
 				barChartHorizontal("chart",data,option);	
 				//alert("hello");
 				

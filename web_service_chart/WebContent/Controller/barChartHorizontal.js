@@ -190,7 +190,8 @@ var barChartHorizontal = function(chartId,data,option){
 	                    drawMajorGridlines: true,
 	                    tickOptions: {formatString:'%d', formatter: $.jqplot.euroFormatter},
 	                    //pad: 1.5,
-	                    min:0
+	                    min:0,
+	                    max:option['max']
 	                },
 	                yaxis: {
 	                    renderer: $.jqplot.CategoryAxisRenderer,
@@ -202,7 +203,8 @@ var barChartHorizontal = function(chartId,data,option){
 	                            fontSize: option['fontSize'],
 	                            formatString:'%d', formatter: $.jqplot.euroFormatter,
 	                        },
-	                        min:0
+	                        min:0,
+	                        max:option['max']
 	                    },
 	                    
 	                    //pad: 1.05,

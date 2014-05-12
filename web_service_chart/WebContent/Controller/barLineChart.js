@@ -258,7 +258,8 @@ var barLineChart=function(chartId,data,option){
     	                yaxis: {
     	                    tickOptions: { showMark: false, formatString: "%d" , formatter: $.jqplot.euroFormatter},
     	                    //pad: -2,
-    	                    min:0
+    	                    min:0,
+    	                    max:option['max']
     	                },
     	            },
     	            axesDefaults: {
@@ -317,7 +318,8 @@ var barLineChart=function(chartId,data,option){
  	                },
  	                yaxis: {
  	                    tickOptions: { showMark: false, formatString: "%d", formatter: $.jqplot.euroFormatter },
- 	                    min:0
+ 	                    min:0,
+ 	                    max:option['max']
  	                },
  	            },
  	            axesDefaults: {
@@ -370,7 +372,10 @@ var barLineChart=function(chartId,data,option){
  		    	   $('.jqplot-event-canvas').css( 'cursor', 'pointer' );
  		    	});
  	    }
-    	 $("#"+chartId+">.jqplot-series-shadowCanvas").css({"background-image":"url(../images/bg2.png)"});
+    	 if(option['background']==true){
+    		 $("#"+chartId+">.jqplot-series-shadowCanvas").css({"background-image":"url(../images/bg2.png)"});
+    	 }
+    	 
     	 $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont']});
     	 $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
 	};
