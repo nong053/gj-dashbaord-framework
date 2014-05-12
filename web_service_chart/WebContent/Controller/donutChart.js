@@ -56,5 +56,7 @@ var donutChart=function(chartId,data,option){
 		  });
 		  //$(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
 		  $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
+		  $("#"+chartId+">.jqplot-data-label").css({"font-size":option['pointLabelsFont'],"color":option['pointLabelsColor']});
+		
 	};
 	

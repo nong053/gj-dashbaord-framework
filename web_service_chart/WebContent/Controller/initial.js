@@ -42,7 +42,7 @@ function tooltipContentEditorByCate(str, seriesIndex, pointIndex, plot) {
 	//console.log(plot.data[seriesIndex][pointIndex]);
 	var cate=plot.data[seriesIndex][pointIndex][0];
 	var vale=plot.data[seriesIndex][pointIndex][1];
-	//console.log(cate);
+	
 	
 	if(themeCustom.length!=0){
 		$(".jqplot-highlighter-tooltip").css({"background":themeCustom[pointIndex],"color":option['tooltipTextColor'],"opacity":"1","z-index":"12999","padding-left":"2px","padding-right":"5px"});

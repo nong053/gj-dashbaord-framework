@@ -30,7 +30,7 @@ $(document).ready(function(){
 				//alert(data);
 				option=[];
 				option['cateRotate']=0;
-				//option['theme']=theme;
+				option['theme']=theme;
 				option['location']='e';
 				option['placement']='outside';
 				option['tooltipTextColor']='white';
@@ -38,14 +38,18 @@ $(document).ready(function(){
 				option['barWidth']=25;
 				option['fontSize']='14px';
 				//show value in graph
-				option['pointLabels']=false;
+				option['pointLabels']=true;
 				//font size value in graph
-				option['pointLabelsFont']='11px';
+				option['pointLabelsFont']='13px';
 				//font tooltip size
 				option['tooltipFontSize']='30px';
 				//clickable
 				option['clickable']=true;
-				option['themeCustom']=["red","green","yellow","#cccccc"];
+				
+				//font color value
+				option['pointLabelsColor']="white";
+				
+				//option['themeCustom']=["red","green","yellow","#cccccc"];
 				barChart("chart",data,option);	
 				
 				
@@ -191,7 +195,7 @@ $(document).ready(function(){
 				option['title']="ชื่อกราฟ";
 				option['location']='e';
 				option['placement']='inside';
-				option['showDataLabels']=false;
+				option['showDataLabels']=true;
 				
 				donutChart("chart",data,option);	
 				
@@ -220,8 +224,9 @@ $(document).ready(function(){
 				option['dataLabels']='value';//‘label’, ‘value’, ‘percent’ 	
 				option['tooltipTextColor']='white';
 				option['title']="ชื่อกราฟ";
-				option['showDataLabels']=false;
-				
+				option['showDataLabels']=true;
+				option['pointLabelsFont']="13px";
+				option['pointLabelsColor']="white";
 				pieChart("chart",data,option);	
 				
 				//bind function click here start.

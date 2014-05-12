@@ -381,7 +381,7 @@ var barLineChart=function(chartId,data,option){
     		 $("#"+chartId+">.jqplot-series-shadowCanvas").css({"background-image":"url(../images/bg2.png)"});
     	 }
     	 
-    	 $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont']});
+    	 $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont'],"color":option['pointLabelsColor']});
     	 $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
 	};
 	

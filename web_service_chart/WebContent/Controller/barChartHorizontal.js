@@ -229,7 +229,7 @@ var barChartHorizontal = function(chartId,data,option){
 			    	   $('.jqplot-event-canvas').css( 'cursor', 'pointer' );
 			    	});
 		    }
-	        $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont']});
+	        $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont'],"color":option['pointLabelsColor']});
 	        $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
 	        //$(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
 	        
