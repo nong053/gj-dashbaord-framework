@@ -40,7 +40,7 @@ var pieChart = function(chartId,data,option){
 	                },
 	                highlighter: {
 	                	  show: true,
-	                	  formatString:'%s %d', 
+	                	  formatString:'%s , %d', 
 	                	  tooltipLocation:'sw', 
 	                	  useAxesFormatters:false,
 	                	  tooltipContentEditor:tooltipContentEditorByCate

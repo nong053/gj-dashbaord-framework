@@ -370,7 +370,7 @@ var barLineChart=function(chartId,data,option){
  		    	   $('.jqplot-event-canvas').css( 'cursor', 'pointer' );
  		    	});
  	    }
-    	 $("#"+chartId+">.jqplot-series-shadowCanvas").append("<table><tr><td>Test</td></tr></table>");
+    	 $("#"+chartId+">.jqplot-series-shadowCanvas").css({"background-image":"url(../images/bg2.png)"});
     	 $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont']});
     	 $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
 	};
