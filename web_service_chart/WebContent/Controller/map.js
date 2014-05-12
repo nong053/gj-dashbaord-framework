@@ -1,4 +1,11 @@
 var map = function(mapId,data,option){
+	
+	if(option['themeCustom']){
+		theme=option['themeCustom'];
+		}else{
+		theme=option['theme'];
+		}
+	
 	var scaleObj=eval("("+option['scale']+")");
 	var mapData="";
 	var mapDataColor="";
@@ -52,7 +59,7 @@ var map = function(mapId,data,option){
 			    	//alert("hello");
 			    	$(".jvectormap-label").css({"background":mapDataColorObj[code],"color":option['tooltipTextColor'],"opacity":"1"});
 			    }else{
-			    	$(".jvectormap-label").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
+			    	$(".jvectormap-label").css({"background":theme[0],"color":option['tooltipTextColor'],"opacity":"1"});
 			    }
 			  },
 			  regionStyle: {

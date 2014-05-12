@@ -30,7 +30,7 @@ $(document).ready(function(){
 				//alert(data);
 				option=[];
 				option['cateRotate']=0;
-				option['theme']=theme;
+				//option['theme']=theme;
 				option['location']='e';
 				option['placement']='outside';
 				option['tooltipTextColor']='white';
@@ -45,7 +45,7 @@ $(document).ready(function(){
 				option['tooltipFontSize']='30px';
 				//clickable
 				option['clickable']=true;
-				
+				option['themeCustom']=["red","green","yellow","#cccccc"];
 				barChart("chart",data,option);	
 				
 				
@@ -123,6 +123,7 @@ $(document).ready(function(){
 				option['pointLabels']=true;
 				option['pointLabelsFont']='20px';
 				option['tooltipFontSize']='30px';
+				
 				
 				barChartHorizontal("chart",data,option);	
 				
@@ -244,16 +245,16 @@ $(document).ready(function(){
 				option=[];
 				option['cateRotate']=0;
 				option['theme']=theme;
-				option['title']="Graph BarlineChart";
 				option['tooltipTextColor']='red';
 				option['location']='e';
 				option['placement']='outside';
-				option['title']="ชื่อกราฟ";
+				option['title']="ชื่อกราฟ1";
 				option['pointLabels']=true;
 				option['pointLabelsFont']='16px';
 				option['barWidth']=40;
 				option['background']=true;
-				option['max']=100;
+				//option['max']=100;
+				//option['themeCustom']=["red","green","yellow"];
 				barLineChart("chart",data,option);	
 				
 				/*

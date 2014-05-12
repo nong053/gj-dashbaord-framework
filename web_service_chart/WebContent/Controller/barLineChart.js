@@ -4,6 +4,11 @@ var barLineChart=function(chartId,data,option){
 	if(option['cateRotate']==""){
 		option['cateRotate']=0;
 	}
+	if(option['themeCustom']){
+		theme=option['themeCustom'];
+		}else{
+		theme=option['theme'];
+	}
 	
 	//checkOption end
 	Array.prototype.getUnique = function(){
@@ -270,7 +275,7 @@ var barLineChart=function(chartId,data,option){
     	                 
     	                }
     	            },
-    	            seriesColors: option['theme'],
+    	            seriesColors: theme,
 
     	            series: [
     	                     
@@ -329,7 +334,7 @@ var barLineChart=function(chartId,data,option){
  	                  fontSize: option['fontSize']
  	                }
  	            },
- 	            seriesColors: option['theme'],
+ 	            seriesColors: theme,
 
  	            series: [  
  	                {label:seriesArrayUnique[0],renderer:$.jqplot.BarRenderer},

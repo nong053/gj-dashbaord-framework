@@ -2,7 +2,12 @@ var donutChart=function(chartId,data,option){
 	
 		// var s1 = [['a',6], ['b',8], ['c',14], ['d',20]];
 		  //var s2 = [['a', 8], ['b', 12], ['c', 6], ['d', 9]];
-		   
+	if(option['themeCustom']){
+		theme=option['themeCustom'];
+		}else{
+		theme=option['theme'];
+		}
+	
 	var value = "";
 	value+="[";
 	
@@ -22,7 +27,7 @@ var donutChart=function(chartId,data,option){
 	
 	
 		  var plot3 = $.jqplot(chartId, [valueObj], {
-			seriesColors: option['theme'],
+			seriesColors: theme,
 			title: option['title'],
 		    seriesDefaults: {
 		      // make this a donut chart.

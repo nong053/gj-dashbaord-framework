@@ -1,5 +1,9 @@
 var option = new Array();
 var theme=["#007BC3", "#76B800", "#FFA500","#EF4C00","#A52A2A","#4682b4"];
+//option['theme']=["#007BC3", "#76B800", "#FFA500","#EF4C00","#A52A2A","#4682b4"];
+//option['themeCustom']=[];
+var themeCustom=[];
+//var themeCustom=[];
 option['fontSize']="13px";
 option['tooltipTextColor']='white';
 option['tooltipFontSize']="27px";
@@ -39,16 +43,24 @@ function tooltipContentEditorByCate(str, seriesIndex, pointIndex, plot) {
 	var cate=plot.data[seriesIndex][pointIndex][0];
 	var vale=plot.data[seriesIndex][pointIndex][1];
 	//console.log(cate);
+	
+	if(themeCustom.length!=0){
+		$(".jqplot-highlighter-tooltip").css({"background":themeCustom[pointIndex],"color":option['tooltipTextColor'],"opacity":"1","z-index":"12999","padding-left":"2px","padding-right":"5px"});
+	}else{
 	 $(".jqplot-highlighter-tooltip").css({"background":theme[pointIndex],"color":option['tooltipTextColor'],"opacity":"1","z-index":"12999","padding-left":"2px","padding-right":"5px"});
-    return   cate+"-"+addCommas(vale);
+	}
+	 return   cate+"-"+addCommas(vale);
 }
 
 function tooltipContentEditor(str, seriesIndex, pointIndex, plot) {
     // display series_label, x-axis_tick, y-axis value
 	//console.log(seriesIndex);
-	
-	 $(".jqplot-highlighter-tooltip").css({"background":theme[seriesIndex],"color":option['tooltipTextColor'],"opacity":"1","z-index":"12999","padding-left":"2px","padding-right":"5px"});
-    return plot.series[seriesIndex]["label"] + "- " + addCommas(plot.data[seriesIndex][pointIndex]);
+	if(themeCustom.length!=0){
+		$(".jqplot-highlighter-tooltip").css({"background":themeCustom[pointIndex],"color":option['tooltipTextColor'],"opacity":"1","z-index":"12999","padding-left":"2px","padding-right":"5px"});
+	}else{
+		$(".jqplot-highlighter-tooltip").css({"background":theme[seriesIndex],"color":option['tooltipTextColor'],"opacity":"1","z-index":"12999","padding-left":"2px","padding-right":"5px"});
+	}
+	 return plot.series[seriesIndex]["label"] + "- " + addCommas(plot.data[seriesIndex][pointIndex]);
 }
 //checkOption end
 Array.prototype.getUnique = function(){

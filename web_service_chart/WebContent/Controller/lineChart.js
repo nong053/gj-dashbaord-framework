@@ -6,6 +6,11 @@ var lineChart=function(chartId,data,option){
 	if(option['cateRotate']==""){
 		option['cateRotate']=0;
 	}
+	if(option['themeCustom']){
+		theme=option['themeCustom'];
+		}else{
+		theme=option['theme'];
+		}
 	
 	//checkOption end
 	Array.prototype.getUnique = function(){
@@ -179,7 +184,7 @@ var lineChart=function(chartId,data,option){
 		      // the axesDefaults object.  Here, we're using a canvas renderer
 		      // to draw the axis label which allows rotated text.
 		      series:obSeries,
-		      seriesColors: option['theme'],
+		      seriesColors: theme,
 		      legend:{ 
 	                show:true,
 	                    renderer: $.jqplot.EnhancedLegendRenderer,

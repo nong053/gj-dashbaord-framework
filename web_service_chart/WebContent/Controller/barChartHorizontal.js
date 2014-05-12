@@ -1,5 +1,9 @@
 var barChartHorizontal = function(chartId,data,option){
-	
+	if(option['themeCustom']){
+		theme=option['themeCustom'];
+		}else{
+		theme=option['theme'];
+		}
 	
 	var cateArray= new Array();
 	var cateArrayUnique= new Array();
@@ -161,7 +165,7 @@ var barChartHorizontal = function(chartId,data,option){
 	            stackSeries: option['stackSeries'],
 	            captureRightClick: true,
 	            title: option['title'],
-	            seriesColors: option['theme'],
+	            seriesColors: theme,
 	            seriesDefaults: {
 	                renderer: $.jqplot.BarRenderer,
 	                shadowAngle: 135,

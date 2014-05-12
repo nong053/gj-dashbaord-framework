@@ -1,7 +1,11 @@
 var pieChart = function(chartId,data,option){
 
 	 //var value= eval("("+data+")");
-	  
+	if(option['themeCustom']){
+		theme=option['themeCustom'];
+		}else{
+		theme=option['theme'];
+		}
 	
 	        //[[\"Heavy Industry\",12],[\"Retail\",9]]
 	var value = "";
@@ -26,7 +30,7 @@ var pieChart = function(chartId,data,option){
 	            		
 	              {
 	            	
-	            	seriesColors: option['theme'],
+	            	seriesColors: theme,
 	            	title: option['title'],
 	                seriesDefaults: {
 	                  // Make this a pie chart.

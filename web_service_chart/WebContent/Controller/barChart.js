@@ -5,7 +5,11 @@ var barChart=function(chartId,data,option){
 	if(option['cateRotate']==""){
 		option['cateRotate']=0;
 	}
-	
+	if(option['themeCustom']){
+	theme=option['themeCustom'];
+	}else{
+	theme=option['theme'];
+	}
 	//checkOption end
 	Array.prototype.getUnique = function(){
 		   var u = {}, a = [];
@@ -217,7 +221,8 @@ var barChart=function(chartId,data,option){
 	                renderer: $.jqplot.CategoryAxisRenderer,
 	                ticks: ticks,
 	                //pad: 0,
-	                min:0
+	                min:0,
+	                max:option['max']
 	                
 	               
                
@@ -232,14 +237,15 @@ var barChart=function(chartId,data,option){
 	            	 tickOptions: {formatString:'%d', formatter: $.jqplot.euroFormatter,
 	            		          //fontSize: '20pt'
 	            		        },
-	            	 min:0
+	            	 min:0,
+	            	 max:option['max']
 	            	
 	            },
 	           
 	            
 	        },
 	        
-	        seriesColors: option['theme'],
+	        seriesColors: theme,
 	        highlighter:{
 	            show:true,
 	            tooltipContentEditor:tooltipContentEditor
