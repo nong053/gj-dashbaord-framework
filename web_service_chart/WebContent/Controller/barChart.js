@@ -10,6 +10,12 @@ var barChart=function(chartId,data,option){
 	}else{
 	theme=option['theme'];
 	}
+	
+	if(option['pointLabelsDicimal']==true){
+		dicimal="%.2f";
+	}else{
+		dicimal="%d";
+	}
 	//checkOption end
 	Array.prototype.getUnique = function(){
 		   var u = {}, a = [];
@@ -234,7 +240,7 @@ var barChart=function(chartId,data,option){
 	            	// rendererOptions: { forceTickAt0: true, forceTickAt100: true },
 	                //pad: -1.5,
 	                //tickOptions: {formatString: '%d'},
-	            	 tickOptions: {formatString:'%d', formatter: $.jqplot.euroFormatter,
+	            	 tickOptions: {formatString:dicimal, formatter: $.jqplot.euroFormatter,
 	            		          //fontSize: '20pt'
 	            		        },
 	            	 min:0,

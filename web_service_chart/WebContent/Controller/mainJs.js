@@ -33,16 +33,19 @@ $(document).ready(function(){
 				option['theme']=theme;
 				option['location']='e';
 				option['placement']='outside';
-				option['tooltipTextColor']='white';
+				option['tooltipTextColor']='yellow';
 				option['title']="ชื่อกราฟ";
 				option['barWidth']=25;
 				option['fontSize']='14px';
 				//show value in graph
 				option['pointLabels']=true;
+				//dicimal
+				option['pointLabelsDicimal']=true;
+				
 				//font size value in graph
 				option['pointLabelsFont']='13px';
 				//font tooltip size
-				option['tooltipFontSize']='30px';
+				option['tooltipFontSize']='10px';
 				//clickable
 				option['clickable']=true;
 				
@@ -123,6 +126,9 @@ $(document).ready(function(){
 				option['stackSeries']=false;
 				option['title']="ชื่อกราฟ";
 				option['barWidth']=25;
+				
+				//dicimal
+				option['pointLabelsDicimal']=true;
 				
 				option['pointLabels']=true;
 				option['pointLabelsFont']='20px';

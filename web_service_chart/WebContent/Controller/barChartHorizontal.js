@@ -1,9 +1,15 @@
 var barChartHorizontal = function(chartId,data,option){
 	if(option['themeCustom']){
-		theme=option['themeCustom'];
-		}else{
-		theme=option['theme'];
-		}
+	theme=option['themeCustom'];
+	}else{
+	theme=option['theme'];
+	}
+	
+	if(option['pointLabelsDicimal']==true){
+		dicimal="%.2f";
+	}else{
+		dicimal="%d";
+	}
 	
 	var cateArray= new Array();
 	var cateArrayUnique= new Array();
@@ -177,7 +183,7 @@ var barChartHorizontal = function(chartId,data,option){
 	                pointLabels: {
 	                    show: option['pointLabels'],
 	                    //formatString: '%d',
-	                    tickOptions: {formatString:'%d', formatter: $.jqplot.euroFormatter},
+	                    tickOptions: {formatString:dicimal, formatter: $.jqplot.euroFormatter},
 	                    hideZeros: true
 	                }
 	            },
@@ -192,7 +198,7 @@ var barChartHorizontal = function(chartId,data,option){
 	                    renderer: $.jqplot.LogAxisRenderer,
 	                    showTicks: true,
 	                    drawMajorGridlines: true,
-	                    tickOptions: {formatString:'%d', formatter: $.jqplot.euroFormatter},
+	                    tickOptions: {formatString:dicimal, formatter: $.jqplot.euroFormatter},
 	                    //pad: 1.5,
 	                    min:0,
 	                    max:option['max']
@@ -205,7 +211,7 @@ var barChartHorizontal = function(chartId,data,option){
 	                            mark: null,
 	                            angle: option['cateRotate'],
 	                            fontSize: option['fontSize'],
-	                            formatString:'%d', formatter: $.jqplot.euroFormatter,
+	                            formatString:dicimal, formatter: $.jqplot.euroFormatter,
 	                        },
 	                        min:0,
 	                        max:option['max']

@@ -11,6 +11,11 @@ var lineChart=function(chartId,data,option){
 		}else{
 		theme=option['theme'];
 		}
+	if(option['pointLabelsDicimal']==true){
+		dicimal="%.2f";
+	}else{
+		dicimal="%d";
+	}
 	
 	//checkOption end
 	Array.prototype.getUnique = function(){
@@ -218,7 +223,7 @@ var lineChart=function(chartId,data,option){
 	            },
 		        yaxis: {
 		          //label: "Y Axis"
-		        	tickOptions: {formatString:'%d', formatter: $.jqplot.euroFormatter},
+		        	tickOptions: {formatString:dicimal, formatter: $.jqplot.euroFormatter},
 		        	pad: 0,
 		        	min:0
 		        }

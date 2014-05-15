@@ -9,6 +9,12 @@ var barLineChart=function(chartId,data,option){
 		}else{
 		theme=option['theme'];
 	}
+	if(option['pointLabelsDicimal']==true){
+		dicimal="%.2f";
+	}else{
+		dicimal="%d";
+	}
+	
 	
 	//checkOption end
 	Array.prototype.getUnique = function(){
@@ -261,7 +267,7 @@ var barLineChart=function(chartId,data,option){
     	                    //pad: 1.5,
     	                },
     	                yaxis: {
-    	                    tickOptions: { showMark: false, formatString: "%d" , formatter: $.jqplot.euroFormatter},
+    	                    tickOptions: { showMark: false, formatString: dicimal , formatter: $.jqplot.euroFormatter},
     	                    //pad: -2,
     	                    min:0,
     	                    max:option['max']
@@ -322,7 +328,7 @@ var barLineChart=function(chartId,data,option){
  	                    //pad: 0,
  	                },
  	                yaxis: {
- 	                    tickOptions: { showMark: false, formatString: "%d", formatter: $.jqplot.euroFormatter },
+ 	                    tickOptions: { showMark: false, formatString: dicimal, formatter: $.jqplot.euroFormatter },
  	                    min:0,
  	                    max:option['max']
  	                },
