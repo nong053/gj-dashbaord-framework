@@ -27,6 +27,7 @@ $(document).ready(function(){
 			type:"get",
 			dataType:"json",
 			success:function(data){
+				
 				//alert(data);
 				option=[];
 				option['cateRotate']=0;
