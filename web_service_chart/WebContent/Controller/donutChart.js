@@ -2,11 +2,32 @@ var donutChart=function(chartId,data,option){
 	
 		// var s1 = [['a',6], ['b',8], ['c',14], ['d',20]];
 		  //var s2 = [['a', 8], ['b', 12], ['c', 6], ['d', 9]];
+	/*
 	if(option['themeCustom']){
 		theme=option['themeCustom'];
 		}else{
 		theme=option['theme'];
 		}
+	*/
+	// #############get id on hover for get id for use tooltip#########################
+	$(".chart").hover(function(){
+		//alert(this.id);
+		$(".idChart").remove();
+		$("body").append("<div class=\"idChart\" style=\"display:none\">"+this.id+"</div>");
+	});
+
+	
+	if(option['themeCustom']!=undefined){
+		theme=option['themeCustom'];
+		//$(".theme").remove();
+		$("body").append("<div id=theme"+chartId+" class=\"themeTooltip\" style=\"display:none\">"+option['themeCustom']+"</div>");
+	}else{
+	
+		theme=option['theme'];
+		//$(".theme").remove();
+		$("body").append("<div id=theme"+chartId+" class=\"themeTooltip\" style=\"display:none\">"+option['theme']+"</div>");
+	}
+	// #############get id on hover for get id for use tooltip#########################
 	
 	var value = "";
 	value+="[";
@@ -46,7 +67,7 @@ var donutChart=function(chartId,data,option){
 		  
 		    },
             highlighter: {
-          	  show: true,
+          	  show: option['tooltip'],
           	  formatString:'%s %d', 
           	  tooltipLocation:'sw', 
           	  useAxesFormatters:false,

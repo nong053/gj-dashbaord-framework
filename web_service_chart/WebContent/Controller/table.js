@@ -97,6 +97,8 @@ var table=function(tableId,data,option){
 				if(option['contentType'][i]=="String"){
 					$("td",this).eq(i).css({"text-align":"left"}); 
 				}else if(option['contentType'][i]=="Number"){
+					//alert(addCommas($("td",this).eq(i).text()));
+					$("td",this).eq(i).text(addCommas($("td",this).eq(i).text()));
 					$("td",this).eq(i).css({"text-align":"right"}); 
 				}else{
 					$("td",this).eq(i).css({"text-align":"center"}); 

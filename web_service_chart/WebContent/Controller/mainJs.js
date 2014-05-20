@@ -35,7 +35,7 @@ $(document).ready(function(){
 				option['placement']='outside';
 				option['tooltipTextColor']='yellow';
 				option['title']="ชื่อกราฟ";
-				option['barWidth']=25;
+				option['barWidth']=20;
 				option['fontSize']='14px';
 				//show value in graph
 				option['pointLabels']=true;
@@ -48,12 +48,14 @@ $(document).ready(function(){
 				option['tooltipFontSize']='10px';
 				//clickable
 				option['clickable']=true;
-				
+				//show hide tooltip
+				option['tooltip']=true;
 				//font color value
 				option['pointLabelsColor']="white";
 				
-				//option['themeCustom']=["red","green","yellow","#cccccc"];
-				barChart("chart",data,option);	
+			   option['themeCustom']=["red","green","yellow","#cccccc"];
+
+				barChart("chart2",data,option);	
 				
 				
 				
@@ -95,7 +97,8 @@ $(document).ready(function(){
 				option['title']="ชื่อกราฟ";
 				option['pointLabels']=true;
 				option['pointLabelsFont']='15px';
-				
+				//show hide tooltip
+				option['tooltip']=true;
 				barChart("chart",data,option);	
 				
 				//bind function click here start.
@@ -126,7 +129,7 @@ $(document).ready(function(){
 				option['stackSeries']=false;
 				option['title']="ชื่อกราฟ";
 				option['barWidth']=25;
-				
+				option['tooltip']=true;
 				//dicimal
 				option['pointLabelsDicimal']=true;
 				
@@ -134,7 +137,7 @@ $(document).ready(function(){
 				option['pointLabelsFont']='20px';
 				option['tooltipFontSize']='30px';
 				
-				
+				option['themeCustom']=["red","green","yellow","#cccccc"];
 				barChartHorizontal("chart",data,option);	
 				
 				//bind function click here start.
@@ -167,7 +170,8 @@ $(document).ready(function(){
 				option['placement']='outside';
 				option['title']="ชื่อกราฟ";
 				
-				
+				//show hide tooltip
+				option['tooltip']=true;
 				option['pointLabels']=true;
 				option['pointLabelsFont']='20px';
 				
@@ -202,7 +206,8 @@ $(document).ready(function(){
 				option['location']='e';
 				option['placement']='inside';
 				option['showDataLabels']=true;
-				
+				//show hide tooltip
+				option['tooltip']=true;
 				donutChart("chart",data,option);	
 				
 				//bind function click here start.
@@ -264,8 +269,11 @@ $(document).ready(function(){
 				option['pointLabelsFont']='16px';
 				option['barWidth']=40;
 				option['background']=true;
+				//show hide tooltip
+				option['tooltip']=true;
 				//option['max']=100;
 				//option['themeCustom']=["red","green","yellow"];
+				
 				barLineChart("chart",data,option);	
 				
 				/*
@@ -310,6 +318,8 @@ $(document).ready(function(){
 				option['title']="ชื่อกราฟ";
 				option['pointLabels']=true;
 				option['pointLabelsFont']='16px';
+				//show hide tooltip
+				option['tooltip']=true;
 				
 				barLineChart("chart",data,option);	
 				
@@ -349,7 +359,8 @@ $(document).ready(function(){
 				
 				option['pointLabels']=true;
 				option['pointLabelsFont']='20px';
-				
+				//show hide tooltip
+				option['tooltip']=true;
 				max:option['max']=100;
 				barChartHorizontal("chart",data,option);	
 				//alert("hello");
@@ -384,6 +395,8 @@ $(document).ready(function(){
 				option['placement']='outside';
 				option['pointLabels']=true;
 				option['pointLabelsFont']='20px';
+				//show hide tooltip
+				option['tooltip']=true;
 				
 				barChartHorizontal("chart",data,option);
 				

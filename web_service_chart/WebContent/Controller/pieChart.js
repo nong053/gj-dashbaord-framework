@@ -1,11 +1,35 @@
 var pieChart = function(chartId,data,option){
 
 	 //var value= eval("("+data+")");
+	/*
 	if(option['themeCustom']){
 		theme=option['themeCustom'];
 		}else{
 		theme=option['theme'];
 		}
+	*/
+	
+	
+	// #############get id on hover for get id for use tooltip#########################
+	$(".chart").hover(function(){
+		//alert(this.id);
+		$(".idChart").remove();
+		$("body").append("<div class=\"idChart\" style=\"display:none\">"+this.id+"</div>");
+	});
+
+	
+	if(option['themeCustom']!=undefined){
+		theme=option['themeCustom'];
+		//$(".theme").remove();
+		$("body").append("<div id=theme"+chartId+" class=\"themeTooltip\" style=\"display:none\">"+option['themeCustom']+"</div>");
+	}else{
+	
+		theme=option['theme'];
+		//$(".theme").remove();
+		$("body").append("<div id=theme"+chartId+" class=\"themeTooltip\" style=\"display:none\">"+option['theme']+"</div>");
+	}
+	// #############get id on hover for get id for use tooltip#########################
+	
 	
 	        //[[\"Heavy Industry\",12],[\"Retail\",9]]
 	var value = "";
@@ -43,7 +67,7 @@ var pieChart = function(chartId,data,option){
 	                  }
 	                },
 	                highlighter: {
-	                	  show: true,
+	                	  show: option['tooltip'],
 	                	  formatString:'%s , %d', 
 	                	  tooltipLocation:'sw', 
 	                	  useAxesFormatters:false,

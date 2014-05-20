@@ -6,11 +6,34 @@ var lineChart=function(chartId,data,option){
 	if(option['cateRotate']==""){
 		option['cateRotate']=0;
 	}
+	/*
 	if(option['themeCustom']){
 		theme=option['themeCustom'];
 		}else{
 		theme=option['theme'];
 		}
+	*/
+	// #############get id on hover for get id for use tooltip#########################
+	$(".chart").hover(function(){
+		//alert(this.id);
+		$(".idChart").remove();
+		$("body").append("<div class=\"idChart\" style=\"display:none\">"+this.id+"</div>");
+	});
+
+	
+	if(option['themeCustom']!=undefined){
+		theme=option['themeCustom'];
+		//$(".theme").remove();
+		$("body").append("<div id=theme"+chartId+" class=\"themeTooltip\" style=\"display:none\">"+option['themeCustom']+"</div>");
+	}else{
+	
+		theme=option['theme'];
+		//$(".theme").remove();
+		$("body").append("<div id=theme"+chartId+" class=\"themeTooltip\" style=\"display:none\">"+option['theme']+"</div>");
+	}
+	// #############get id on hover for get id for use tooltip#########################
+	
+	
 	if(option['pointLabelsDicimal']==true){
 		dicimal="%.2f";
 	}else{
@@ -235,7 +258,7 @@ var lineChart=function(chartId,data,option){
 		            
 		        },
 		      highlighter:{
-		            show:true,
+		            show:option['tooltip'],
 		            tooltipContentEditor:tooltipContentEditor
 		        }
 		    });
@@ -243,7 +266,7 @@ var lineChart=function(chartId,data,option){
 		 if(option['clickable']==true){
  		    
 			    $("#"+chartId).on('jqplotDataHighlight', function () {
-			    	   $('.jqplot-event-canvas').css( 'cursor', 'pointer' );
+			    	   $("#"+chartId+" >.jqplot-event-canvas").css( 'cursor', 'pointer' );
 			    	});
 		    }
 		 $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont'],"color":option['pointLabelsColor']});

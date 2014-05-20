@@ -74,8 +74,10 @@ font:Tahoma 13px;
 
 </head>
 <body>
-<div style="height:250px;width:500px;float:left;"  id="chart"></div>
+<div style="height:250px;width:500px;"  id="chart" class="chart"></div><br>
+<div style="height:250px;width:500px;"  id="chart2" class="chart"></div>
 
+<br>
 <button id="btnBarChart">btnBarChart</button>
 <button id="btnBarChartMutiSeries">btnBarChartMutiSeries</button>
 <button id="btnChartHorizontal">Horizontal</button>

@@ -1,15 +1,34 @@
+
 var barChart=function(chartId,data,option){
+	themeBarChart="";
 //Array Unigue start
 	//checkOption start
+	
 	
 	if(option['cateRotate']==""){
 		option['cateRotate']=0;
 	}
-	if(option['themeCustom']){
-	theme=option['themeCustom'];
+	
+	// #############get id on hover for get id for use tooltip#########################
+	$(".chart").hover(function(){
+		//alert(this.id);
+		$(".idChart").remove();
+		$("body").append("<div class=\"idChart\" style=\"display:none\">"+this.id+"</div>");
+	});
+
+	
+	if(option['themeCustom']!=undefined){
+		themeBarChart=option['themeCustom'];
+		//$(".theme").remove();
+		$("body").append("<div id=theme"+chartId+" class=\"themeTooltip\" style=\"display:none\">"+option['themeCustom']+"</div>");
 	}else{
-	theme=option['theme'];
+	
+		themeBarChart=option['theme'];
+		//$(".theme").remove();
+		$("body").append("<div id=theme"+chartId+" class=\"themeTooltip\" style=\"display:none\">"+option['theme']+"</div>");
 	}
+	// #############get id on hover for get id for use tooltip#########################
+	
 	
 	if(option['pointLabelsDicimal']==true){
 		dicimal="%.2f";
@@ -251,9 +270,9 @@ var barChart=function(chartId,data,option){
 	            
 	        },
 	        
-	        seriesColors: theme,
+	        seriesColors: themeBarChart,
 	        highlighter:{
-	            show:true,
+	            show:option['tooltip'],
 	            tooltipContentEditor:tooltipContentEditor
 	        },
 	       
@@ -262,11 +281,12 @@ var barChart=function(chartId,data,option){
 	    if(option['clickable']==true){
 	    		    
 		    $("#"+chartId).on('jqplotDataHighlight', function () {
-		    	   $('.jqplot-event-canvas').css( 'cursor', 'pointer' );
+		    	   $("#"+chartId+" > .jqplot-event-canvas").css( 'cursor', 'pointer' );
 		    	});
 	    }
 	    $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont'],"color":option['pointLabelsColor']});
 	    $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
+	    
 	    //$(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
 	    
 	};
