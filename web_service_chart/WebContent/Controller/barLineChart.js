@@ -272,7 +272,7 @@ var barLineChart=function(chartId,data,option){
 	    if(seriesArrayUnique.length==2){
 	    	$.jqplot(chartId, obValue, callBarChart());
 	    }else if(seriesArrayUnique.length==3){
-	    	$.jqplot(chartId, obValue, callBarChart2());
+	    	$.jqplot(chartId, obValue, callBarChart2y());
 	    }
     	 
    
@@ -306,7 +306,6 @@ var barLineChart=function(chartId,data,option){
 
     	            series: [
     	                     
-						
     	                    
     	               {label:Planned,renderer:$.jqplot.BarRenderer},
     	                //{label: 'Actual',renderer:$.jqplot.BarRenderer},
@@ -338,22 +337,32 @@ var barLineChart=function(chartId,data,option){
     	        return optionsObj;
     	    }
     	 
-    	 function callBarChart2()
+    	 function callBarChart2y()
  	    {
  	        var optionsObj = {
  	            title: option['title'],
+ 	           axes: {
+                   xaxis: {renderer: $.jqplot.CategoryAxisRenderer, tickInterval: 15},
+                  // yaxis: {autoscale: true},
+                   yaxis: {
+	                    tickOptions: { showMark: false, formatString: dicimal , formatter: $.jqplot.euroFormatter},
+	                    //pad: -2,
+	                    autoscale: true,
+	                    min:0,
+	                    max:option['max']
+	                },
+                   y2axis: {autoscale: true}      
+                 },
+                /* 
  	            axes: {
  	                 xaxis: {
  	                    renderer: $.jqplot.CategoryAxisRenderer,
  	                    ticks: cate, 
  	                    //pad: 0,
  	                },
- 	                yaxis: {
- 	                    tickOptions: { showMark: false, formatString: dicimal, formatter: $.jqplot.euroFormatter },
- 	                    min:0,
- 	                    max:option['max']
- 	                },
- 	            },
+ 	                */
+ 	               
+ 	            
  	            axesDefaults: {
  	                tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
  	                tickOptions: {
@@ -362,19 +371,19 @@ var barLineChart=function(chartId,data,option){
  	                }
  	            },
  	            seriesColors: theme,
-
+/*
  	            series: [  
  	                {label:seriesArrayUnique[0],renderer:$.jqplot.BarRenderer},
  	                {label: seriesArrayUnique[1],renderer:$.jqplot.BarRenderer},
  	                {label: seriesArrayUnique[2]}
- 	                ],
+ 	                ],*/
 
  	            legend: {
  	                show: true,
  	                location: option['location'] ,
-	                    placement :option['placement']
+	                placement :option['placement']
  	                },
-
+ 	            /*
  	            seriesDefaults:{
  	                shadow: false,
  	                rendererOptions:{
@@ -385,15 +394,84 @@ var barLineChart=function(chartId,data,option){
  	               },
  	              pointLabels: { show: option['pointLabels'] },
 
- 	            }, 
+ 	            },
+ 	            */ 
+ 	           seriesDefaults: {show: true, xaxis: 'xaxis', 
+ 	        	       rendererOptions:{
+ 	                   barPadding: 0,
+ 	                   barMargin: 10,
+ 	                   barWidth: option['barWidth'],
+ 	 	              
+ 	               },
+ 	              pointLabels: { show: option['pointLabels'] },
+},
  	            highlighter:{
  		            show:option['tooltip'],
  		            tooltipContentEditor:tooltipContentEditor
  		        },
+ 		       series: [{label:seriesArrayUnique[0],renderer:$.jqplot.BarRenderer},
+ 	 	                {label: seriesArrayUnique[1],renderer:$.jqplot.BarRenderer},{label: seriesArrayUnique[2],yaxis: 'y2axis'}],
  	        };
  	        return optionsObj;
  	        
  	    }
+    	 
+    	 function callBarChart2()
+  	    {
+  	        var optionsObj = {
+  	            title: option['title'],
+  	            axes: {
+  	                 xaxis: {
+  	                    renderer: $.jqplot.CategoryAxisRenderer,
+  	                    ticks: cate, 
+  	                    //pad: 0,
+  	                },
+  	                yaxis: {
+  	                    tickOptions: { showMark: false, formatString: dicimal, formatter: $.jqplot.euroFormatter },
+  	                    min:0,
+  	                    max:option['max']
+  	                },
+  	            },
+  	            axesDefaults: {
+  	                tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+  	                tickOptions: {
+  	                  angle: option['cateRotate'],
+  	                  fontSize: option['fontSize']
+  	                }
+  	            },
+  	            seriesColors: theme,
+
+  	            series: [  
+  	                {label:seriesArrayUnique[0],renderer:$.jqplot.BarRenderer},
+  	                {label: seriesArrayUnique[1],renderer:$.jqplot.BarRenderer},
+  	                {label: seriesArrayUnique[2]}
+  	                ],
+
+  	            legend: {
+  	                show: true,
+  	                location: option['location'] ,
+ 	                placement :option['placement']
+  	                },
+
+  	            seriesDefaults:{
+  	                shadow: false,
+  	                rendererOptions:{
+  	                   barPadding: 0,
+  	                   barMargin: 10,
+  	                   barWidth: option['barWidth'],
+  	 	              
+  	               },
+  	              pointLabels: { show: option['pointLabels'] },
+
+  	            }, 
+  	            highlighter:{
+  		            show:option['tooltip'],
+  		            tooltipContentEditor:tooltipContentEditor
+  		        },
+  	        };
+  	        return optionsObj;
+  	        
+  	    };
     	 
  	   // $(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
     
@@ -408,6 +486,7 @@ var barLineChart=function(chartId,data,option){
     		 $("#"+chartId+">.jqplot-series-shadowCanvas").css({"background-image":"url(../images/bg2.png)"});
     	 }
     	 
+    	 $("#"+chartId+">.jqplot-yaxis-tick").css({"color":"#000000"});
     	 $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont'],"color":option['pointLabelsColor']});
     	 $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
 	};

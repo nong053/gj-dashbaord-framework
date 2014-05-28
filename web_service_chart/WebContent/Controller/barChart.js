@@ -284,6 +284,7 @@ var barChart=function(chartId,data,option){
 		    	   $("#"+chartId+" > .jqplot-event-canvas").css( 'cursor', 'pointer' );
 		    	});
 	    }
+	    $("#"+chartId+">.jqplot-yaxis-tick").css({"color":"#000000"});
 	    $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont'],"color":option['pointLabelsColor']});
 	    $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
 	    

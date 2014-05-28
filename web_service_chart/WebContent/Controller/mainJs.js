@@ -18,7 +18,13 @@ $(document).ready(function(){
 */
 //set tooltip
 
-
+	$("#btnBarChartMutiYaxes").click(function(){
+		var series1=[['11-01-2011',2052], ['11-02-2011',2205], ['11-03-2011',1910], ['11-04-2011',2085], ['11-05-2011',2261]];
+  	    var series2=[['11-01-2011',10], ['11-02-2011',20], ['11-03-2011',30], ['11-04-2011',40], ['11-05-2011',50]];
+  	    
+  	    
+  	    barChartY2axis(series1,series2);
+	});
 
 	$("#btnBarChart").click(function(){
 
@@ -54,7 +60,7 @@ $(document).ready(function(){
 				//font color value
 				option['pointLabelsColor']="white";
 				
-			   option['themeCustom']=["red","green","yellow","#cccccc"];
+			    option['themeCustom']=["red","green","yellow","#cccccc"];
 
 				barChart("chart2",data,option);	
 				
@@ -136,7 +142,8 @@ $(document).ready(function(){
 				
 				option['pointLabels']=true;
 				option['pointLabelsFont']='20px';
-				option['tooltipFontSize']='30px';
+				option['ticks']=['0','20','40','60','80','100',];
+				
 				
 				option['themeCustom']=["red","green","yellow","#cccccc"];
 				barChartHorizontal("chart",data,option);	
@@ -175,6 +182,8 @@ $(document).ready(function(){
 				option['tooltip']=true;
 				option['pointLabels']=true;
 				option['pointLabelsFont']='20px';
+				option['clickable']=true;
+				
 				
 				lineChart("chart",data,option);	
 				//bind function click here start.

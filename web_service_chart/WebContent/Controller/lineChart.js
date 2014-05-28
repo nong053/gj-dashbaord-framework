@@ -263,12 +263,14 @@ var lineChart=function(chartId,data,option){
 		        }
 		    });
 		 
+		
 		 if(option['clickable']==true){
- 		    
-			    $("#"+chartId).on('jqplotDataHighlight', function () {
-			    	   $("#"+chartId+" >.jqplot-event-canvas").css( 'cursor', 'pointer' );
-			    	});
+			    $("#"+chartId+" >.jqplot-event-canvas").css( 'cursor', 'pointer' );
+		    	$("#"+chartId+" >.jqplot-point-label").css( 'cursor', 'pointer' );
+		    	
+			   
 		    }
+		 $("#"+chartId+">.jqplot-yaxis-tick").css({"color":"#000000"});
 		 $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont'],"color":option['pointLabelsColor']});
 		 $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
 		 //$(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});

@@ -27,9 +27,9 @@ var barChartHorizontal = function(chartId,data,option){
 	// #############get id on hover for get id for use tooltip#########################
 	
 	if(option['pointLabelsDicimal']==true){
-		dicimal="%.2f";
+		dicimal="%.2f\%";
 	}else{
-		dicimal="%d";
+		dicimal="%d\%";
 	}
 	
 	var cateArray= new Array();
@@ -222,7 +222,8 @@ var barChartHorizontal = function(chartId,data,option){
 	                    tickOptions: {formatString:dicimal, formatter: $.jqplot.euroFormatter},
 	                    //pad: 1.5,
 	                    min:0,
-	                    max:option['max']
+	                    max:option['max'],
+	                    ticks:option['ticks'],
 	                },
 	                yaxis: {
 	                    renderer: $.jqplot.CategoryAxisRenderer,
@@ -256,6 +257,7 @@ var barChartHorizontal = function(chartId,data,option){
 			    	   $("#"+chartId+" >.jqplot-event-canvas").css( 'cursor', 'pointer' );
 			    	});
 		    }
+	        $("#"+chartId+">.jqplot-yaxis-tick").css({"color":"#000000"});
 	        $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont'],"color":option['pointLabelsColor']});
 	        $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
 	        //$(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});

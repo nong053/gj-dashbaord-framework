@@ -1,14 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style>
-body{
-font:Tahoma 13px;
-}
-</style>
-
 
 
 <!-- main library start-->
@@ -48,60 +42,39 @@ font:Tahoma 13px;
 <script type="text/javascript" src="../libraryChart/jqplot/plugins/jqplot.highlighter.js"></script>
 
 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script>
+$(document).ready(function(){
+    var line1=[['11-01-2011',2052], ['11-02-2011',2205], ['11-03-2011',1910], ['11-04-2011',2085], ['11-05-2011',2261],  ['11-06-2011',1714],  ['11-07-2011',3123]];
+    var line2=[['11-01-2011',2121], ['11-02-2011',32323],['11-03-2011',65656],['11-04-  11',21212],['11-05-2011',32323], ['11-06-2011',54544], ['11-07-2011',31230]];
 
+    $.jqplot.config.enablePlugins = true;
 
-<!--  library  chart start -->
+    var plot1 = $.jqplot('chart1', [line1, line2], {
+      title:'Margin vs Date',
+      axes:{
+          xaxis:{
+              renderer:$.jqplot.DateAxisRenderer            
+          },
+          yaxis:{  
+            autoscale:true,
+            label: "hello"
+          },  
+          y2axis:{
+            autoscale:true, 
+            tickOptions:{showGridline:false},
+            label: "Hi"
+          }
 
-<!--  library function chart start -->
-
-<script type="text/javascript" src="../Controller/initial.js"></script> 
-<script type="text/javascript" src="../Controller/barChart.js"></script> 
-<script type="text/javascript" src="../Controller/barChartHorizontal.js"></script>
-<script type="text/javascript" src="../Controller/donutChart.js"></script>
-<script type="text/javascript" src="../Controller/lineChart.js"></script>
-<script type="text/javascript" src="../Controller/pieChart.js"></script>
-<script type="text/javascript" src="../Controller/barLineChart.js"></script>
-<script type="text/javascript" src="../Controller/gaugeChart.js"></script>
-<script type="text/javascript" src="../Controller/map.js"></script>
-<script type="text/javascript" src="../Controller/table.js"></script>
-<script type="text/javascript" src="../Controller/mainJs.js"></script>
-<script type="text/javascript" src="../Controller/barChartY2axis.js"></script>
-
-
-<!--  library function chart end -->
-
-
-<title>Test function Chart</title>
-
-<title>Test function Chart</title>
-
-
+      },
+      series:[{lineWidth:4}, {yaxis:'y2axis'}]
+    });
+  });
+  
+</script>
 </head>
 <body>
-<div style="height:250px;width:500px;"  id="chart" class="chart"></div><br>
-<div style="height:250px;width:500px;"  id="chart2" class="chart"></div>
-
-<br>
-<button id="btnBarChart">btnBarChart</button>
-<button id="btnBarChartMutiSeries">btnBarChartMutiSeries</button>
-<button id="btnChartHorizontal">Horizontal</button>
-<button id="btnChartHorizontalMutiSeries">barchartHorizontalMutiSeries</button>
-<button id="btnChartHorizontalMutiSeriesStace">btnChartHorizontalMutiSeriesStace</button>
-
-<button id="btnChartLine">btnChartLine</button>
-<button id="btnDonut">Donut chart</button>
-<button id="btnPie">Pie chart</button>
-<button id="btnBarLineChart">BarLine chart</button>
-<button id="btnBarLineChart2">BarLine chart2</button>
-
-<button id="btngaugeChart">gaugeChart</button>
-<button id="btnMapRegion">MapRegion</button>
-<button id="btnMapProvince">MapProvince</button>
-<button id="btnMapRegionByProvince">MapRegionByProvince</button>
-<button id="btnMapWorld">MapWorld</button>
-<button id="btnTable">Table</button>
-<button id="btnBarChartMutiYaxes">barChartMutiYaxes</button>
-
-
+	<div id="chart1"></div>
 </body>
 </html>
