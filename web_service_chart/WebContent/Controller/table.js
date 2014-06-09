@@ -51,9 +51,45 @@ var table=function(tableId,data,option){
 		htmlTable+="<table id=\"table"+tableId+"\">";
 		htmlTable+="<colgroup>";
 	    for(var i=0;i<option['colsWidth'].length;i++){
-	    	htmlTable+="<col style=\"width:"+option['colsWidth'][i]+"\" />";
+	    	htmlTable+="<col style=\"width:"+(parseInt(option['colsWidth'][i])-0)+"px\" />";
 		}
 	    htmlTable+="</colgroup>";
+	    
+	    /*
+	    [{
+            field: "ContactName",
+            title: "Contact Name",
+            width: 200
+        }, {
+            field: "ContactTitle",
+            title: "Contact Title"
+        }, {
+            field: "CompanyName",
+            title: "Company Name"
+        }, {
+            field: "Country",
+            width: 150
+        }]
+	    */
+	    var columns="";
+	    columns="[";
+	    for(var i=0;i<option['colsWidth'].length;i++){
+	    	 if(i==0){
+	    		 columns+="{";
+	    		 columns+="field: \"columns"+i+"\",";
+	    		 columns+="width:"+option['colsWidth'][i]+"";
+	    	 }else{
+	    		 columns+=",{";
+	    		 columns+="field: \"columns"+i+"\",";
+	    		 columns+="width:"+option['colsWidth'][i]+"";
+	    	 }
+	    	//htmlTable+="<col style=\"width:"+(parseInt(option['colsWidth'][i])-0)+"\" />";
+	    	
+	    	 columns+="}";
+		}
+	    columns+="]";
+	    var objColumns=eval("("+columns+")");
+	    console.log(objColumns);
 	    
 		htmlTable+="<thead>";
 		for(var i=0;i<option['title'].length;i++){
@@ -87,8 +123,10 @@ var table=function(tableId,data,option){
    
 	$("#table"+tableId).kendoGrid({
         height: option['height'],
-        sortable: true
+        columns: objColumns
+        //sortable: true
     });
+    
     
 	$(".k-grid td").css({"padding":"0px","padding-left":"3px","padding-right":"3px"});
 	 $("#table"+tableId+" tbody tr").each(function(){

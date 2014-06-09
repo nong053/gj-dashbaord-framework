@@ -48,16 +48,18 @@ function tooltipContentEditorByCate(str, seriesIndex, pointIndex, plot) {
 	var idChart=$(".idChart").text();
     var themeCustom = $("#theme"+idChart).text();
 	var themeCustomArray = themeCustom.split(",");
-	/*
-	console.log(option['themeCustom']);
-	if(option['themeCustom']!=undefined){
+	
+	
+	console.log(themeCustomArray);
+	
+	/*if(option['themeCustom']!=undefined){
 		$("#"+idChart+">.jqplot-highlighter-tooltip").css({"background":option['themeCustom'][pointIndex],"color":option['tooltipTextColor'],"opacity":"1","z-index":"12999","padding-left":"2px","padding-right":"5px"});
 	}else{
 		$("#"+idChart+">.jqplot-highlighter-tooltip").css({"background":theme[pointIndex],"color":option['tooltipTextColor'],"opacity":"1","z-index":"12999","padding-left":"2px","padding-right":"5px"});
 	}
 	*/
-
-	$("#"+idChart+">.jqplot-highlighter-tooltip").css({"background":themeCustomArray[seriesIndex],"color":option['tooltipTextColor'],"opacity":"1","z-index":"12999","padding-left":"2px","padding-right":"5px"});
+	//alert(pointIndex);
+	$("#"+idChart+">.jqplot-highlighter-tooltip").css({"background":themeCustomArray[pointIndex],"color":option['tooltipTextColor'],"opacity":"1","z-index":"12999","padding-left":"2px","padding-right":"5px"});
 
 	if(option['pointLabelsDicimal']==true){
 	 return   cate+"-"+getDicimalCommas(vale);

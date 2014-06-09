@@ -272,6 +272,12 @@ var lineChart=function(chartId,data,option){
 		    }
 		 $("#"+chartId+">.jqplot-yaxis-tick").css({"color":"#000000"});
 		 $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont'],"color":option['pointLabelsColor']});
+		 $("#"+chartId+">.jqplot-point-label").css({
+		    	"-webkit-transform":"rotate("+option['pointLabelsRotate']+"deg)",
+		    	"-moz-transform":"rotate("+option['pointLabelsRotate']+"deg)",
+		    	"-transform":"rotate("+option['pointLabelsRotate']+"deg)",
+		    	"-ms-transform":"rotate("+option['pointLabelsRotate']+"deg)",
+		    	});
 		 $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
 		 //$(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
 	};

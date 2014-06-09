@@ -46,6 +46,8 @@ $(document).ready(function(){
 				option['fontSize']='14px';
 				//show value in graph
 				option['pointLabels']=true;
+				//set rotation value
+				option['pointLabelsRotate']=-90;
 				//dicimal
 				option['pointLabelsDicimal']=true;
 				
@@ -699,7 +701,7 @@ $(document).ready(function(){
 				option['title']=["ลำดับ","หัวข้อ","Admission","test2"];
 				option['contentType']=["","String","Number","Number"];
 				option['height']='430';
-				option['colsWidth']=["80px","200px","120px","130px"];
+				option['colsWidth']=["80","100","120","150"];
 				option["runNumber"]=true;
 				table("chart",data,option);	
 				

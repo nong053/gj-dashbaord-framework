@@ -22,6 +22,7 @@ font:Tahoma 13px;
 
 <link href="../libraryChart/kendoCommercial/styles/kendo.common.min.css" rel="stylesheet" />
 <link href="../libraryChart/kendoCommercial/styles/kendo.default.min.css" rel="stylesheet" />
+<link href="../libraryChart/css/chart.css" rel="stylesheet" />
 <script src="../libraryChart/kendoCommercial/js/kendo.all.min.js"></script>
 <!-- <link href="../libraryChart/bootsrap/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
 <link href="../libraryChart/bootsrap/css/bootstrap-theme.min.css" type="text/css" rel="stylesheet"/>-->
@@ -46,6 +47,8 @@ font:Tahoma 13px;
 <script type="text/javascript" src="../libraryChart/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
 <script type="text/javascript" src="../libraryChart/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
 <script type="text/javascript" src="../libraryChart/jqplot/plugins/jqplot.highlighter.js"></script>
+<script type="text/javascript" src="../libraryChart/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js"></script>
+
 
 
 
