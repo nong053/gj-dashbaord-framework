@@ -272,7 +272,11 @@ var barLineChart=function(chartId,data,option){
 	    if(seriesArrayUnique.length==2){
 	    	$.jqplot(chartId, obValue, callBarChart());
 	    }else if(seriesArrayUnique.length==3){
-	    	$.jqplot(chartId, obValue, callBarChart2y());
+	    	if(option['y2axis']==true){
+	    		$.jqplot(chartId, obValue, callBarChart2y());
+	    	}else{
+	    		$.jqplot(chartId, obValue, callBarChart2());
+	    	}
 	    }
     	 
    
