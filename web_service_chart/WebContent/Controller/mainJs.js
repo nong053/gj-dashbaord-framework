@@ -332,7 +332,8 @@ $(document).ready(function(){
 				option['pointLabelsFont']='16px';
 				//show hide tooltip
 				option['tooltip']=true;
-				
+				//show y2axis
+				option['y2axis']=true;
 				barLineChart("chart",data,option);	
 				
 				//bind function click here start.
