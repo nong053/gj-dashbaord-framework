@@ -225,8 +225,8 @@ var lineChart=function(chartId,data,option){
 	                 }, 
 		      axesDefaults: {
 		    	
-		        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-		        tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+		        //labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+		        //tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
 		        tickOptions: {
 	                  angle: option['cateRotate'],
 	                  fontSize: option['fontSize']
