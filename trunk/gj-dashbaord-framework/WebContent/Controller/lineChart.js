@@ -6,6 +6,39 @@ var lineChart=function(chartId,data,option){
 	if(option['cateRotate']==""){
 		option['cateRotate']=0;
 	}
+	/*
+	if(option['themeCustom']){
+		theme=option['themeCustom'];
+		}else{
+		theme=option['theme'];
+		}
+	*/
+	// #############get id on hover for get id for use tooltip#########################
+	$(".chart").hover(function(){
+		//alert(this.id);
+		$(".idChart").remove();
+		$("body").append("<div class=\"idChart\" style=\"display:none\">"+this.id+"</div>");
+	});
+
+	
+	if(option['themeCustom']!=undefined){
+		theme=option['themeCustom'];
+		//$(".theme").remove();
+		$("body").append("<div id=theme"+chartId+" class=\"themeTooltip\" style=\"display:none\">"+option['themeCustom']+"</div>");
+	}else{
+	
+		theme=option['theme'];
+		//$(".theme").remove();
+		$("body").append("<div id=theme"+chartId+" class=\"themeTooltip\" style=\"display:none\">"+option['theme']+"</div>");
+	}
+	// #############get id on hover for get id for use tooltip#########################
+	
+	
+	if(option['pointLabelsDicimal']==true){
+		dicimal="%.0f\%";
+	}else{
+		dicimal="%d";
+	}
 	
 	//checkOption end
 	Array.prototype.getUnique = function(){
@@ -59,7 +92,7 @@ var lineChart=function(chartId,data,option){
 		});
 		series+="]";
 		
-		
+		/*
 		var value="";
 		value+="[[";
 		var cateLength=cateArrayUnique.length-1;
@@ -86,6 +119,77 @@ var lineChart=function(chartId,data,option){
 			});
 			value+="]";
 		//alert(value);
+		*/
+		//check value is empty is set 0
+		var cateLength=cateArrayUnique.length-1;
+		
+		var slotArray= new Array();//get array all
+		var slotArray2= new Array();//get array for data is not empty
+		
+		for(var i=0;i<seriesArrayUnique.length;i++){
+			
+			
+			slotArray[i] = new Array();
+			slotArray2[i] = new Array();
+			
+			
+			for(var j=0;j<cateArrayUnique.length;j++){
+				slotArray[i][j]=cateArrayUnique[j];
+				//alert(cateArrayUnique[j]);
+				
+				$.each(data,function(index,indexEntry){
+					if((cateArrayUnique[j]==indexEntry[0])&&(seriesArrayUnique[i]==indexEntry[1])){
+						//alert(cateArrayUnique[j]+"-"+indexEntry[2]);
+						slotArray2[i][j]=indexEntry[2];
+
+					}
+					
+				});
+
+			}
+
+		}
+
+		var value="";
+		value+="[[";
+		var checkUndefinedValue=0;
+		//manage import data value  and check undefined value
+		for(var i=0;i<slotArray.length;i++){
+					//alert(slotArray[i]);
+				for(var j=0;j<slotArray[i].length;j++){
+					if(slotArray2[i][j]==undefined){
+						checkUndefinedValue=0; 
+					}else{
+						checkUndefinedValue=slotArray2[i][j];
+					}
+
+					
+					if(i==0){
+						if(j==0){
+						value+=+checkUndefinedValue;
+						}else{
+						value+=","+checkUndefinedValue;	
+						}
+					}else{
+						if(cateLength==cateArrayUnique.length-1){
+							value+=",["+checkUndefinedValue;
+						}else{
+							value+=","+checkUndefinedValue;
+						}
+						
+					}
+					
+					if(cateLength==0){
+						value+="]";
+						cateLength=cateArrayUnique.length;
+					}
+					cateLength--;
+					
+					
+				}
+			
+		}
+		value+="]";
 		
 	
 	    
@@ -108,7 +212,7 @@ var lineChart=function(chartId,data,option){
 		      // the axesDefaults object.  Here, we're using a canvas renderer
 		      // to draw the axis label which allows rotated text.
 		      series:obSeries,
-		      seriesColors: option['theme'],
+		      seriesColors: theme,
 		      legend:{ 
 	                show:true,
 	                    renderer: $.jqplot.EnhancedLegendRenderer,
@@ -120,7 +224,14 @@ var lineChart=function(chartId,data,option){
 	                    }
 	                 }, 
 		      axesDefaults: {
-		        labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+		    	
+		        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+		        tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+		        tickOptions: {
+	                  angle: option['cateRotate'],
+	                  fontSize: option['fontSize']
+	                },
+	                
 		      },
 		      // An axes object holds options for all axes.
 		      // Allowable axes are xaxis, x2axis, yaxis, y2axis, y3axis, ...
@@ -129,16 +240,45 @@ var lineChart=function(chartId,data,option){
 		        // options for each axis are specified in seperate option objects.
 		         xaxis: {
 	                renderer: $.jqplot.CategoryAxisRenderer,
-	                ticks: ticks
+	                ticks: ticks,
+	                pad: 1.5,
+	                min:0
 	            },
 		        yaxis: {
 		          //label: "Y Axis"
+		        	tickOptions: {formatString:dicimal, formatter: $.jqplot.euroFormatter},
+		        	pad: 0,
+		        	ticks:option['ticksY'],
+		        	min:0
 		        }
 		      },
+		      seriesDefaults:{
+		          
+		            pointLabels: { show: option['pointLabels'] },
+		            
+		            
+		        },
 		      highlighter:{
-		            show:true,
+		            show:option['tooltip'],
 		            tooltipContentEditor:tooltipContentEditor
 		        }
 		    });
-		 $(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
+		 
+		
+		 if(option['clickable']==true){
+			    $("#"+chartId+" >.jqplot-event-canvas").css( 'cursor', 'pointer' );
+		    	$("#"+chartId+" >.jqplot-point-label").css( 'cursor', 'pointer' );
+		    	
+			   
+		    }
+		 $("#"+chartId+">.jqplot-yaxis-tick").css({"color":"#000000"});
+		 $("#"+chartId+">.jqplot-point-label").css({"font-size":option['pointLabelsFont'],"color":option['pointLabelsColor']});
+		 $("#"+chartId+">.jqplot-point-label").css({
+		    	"-webkit-transform":"rotate("+option['pointLabelsRotate']+"deg)",
+		    	"-moz-transform":"rotate("+option['pointLabelsRotate']+"deg)",
+		    	"-transform":"rotate("+option['pointLabelsRotate']+"deg)",
+		    	"-ms-transform":"rotate("+option['pointLabelsRotate']+"deg)",
+		    	});
+		 $("#"+chartId+">.jqplot-highlighter-tooltip").css({"font-size":option['tooltipFontSize']});
+		 //$(".jqplot-highlighter-tooltip").css({"background":option['theme'][0],"color":option['tooltipTextColor'],"opacity":"1"});
 	};
