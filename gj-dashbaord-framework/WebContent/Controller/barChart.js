@@ -206,8 +206,6 @@ var barChart=function(chartId,data,option){
 	            				 barWidth: option['barWidth']
 	            				 },
 	            pointLabels: { show: option['pointLabels'] },
-	            
-	            
 	        },
 	       
 	        stackSeries: option['stackSeries'],
@@ -222,10 +220,10 @@ var barChart=function(chartId,data,option){
 	        // A value of "outside" would not shrink the grid and allow
 	        // the legend to overflow the container.
 	        axesDefaults: {
-                tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+                //tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
                 tickOptions: {
                   angle: option['cateRotate'],
-                  fontSize: option['fontSize']
+                  fontSize: option['fontSize'],
                 }
             },
 	        legend:{ 
@@ -247,8 +245,11 @@ var barChart=function(chartId,data,option){
 	                ticks: ticks,
 	                //pad: 0,
 	                min:0,
-	                max:option['max']
+	                max:option['max'],
 	                
+	                tickOptions: {formatString:dicimal, 
+	                	formatter: $.jqplot.euroFormatter,	                	
+      		        },
 	               
                
                   
@@ -260,7 +261,6 @@ var barChart=function(chartId,data,option){
 	                //pad: -1.5,
 	                //tickOptions: {formatString: '%d'},
 	            	 tickOptions: {formatString:dicimal, formatter: $.jqplot.euroFormatter,
-	            		          //fontSize: '20pt'
 	            		        },
 	            	 min:0,
 	            	 max:option['max']

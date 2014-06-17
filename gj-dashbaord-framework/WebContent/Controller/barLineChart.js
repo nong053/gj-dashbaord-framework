@@ -299,10 +299,10 @@ var barLineChart=function(chartId,data,option){
     	                },
     	            },
     	            axesDefaults: {
-    	                tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+    	                //tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
     	                tickOptions: {
     	                  angle: option['cateRotate'],
-    	                  fontSize: '10pt',
+    	                  //fontSize: '10pt',
     	                 
     	                }
     	            },
@@ -395,7 +395,7 @@ var barLineChart=function(chartId,data,option){
  	               
  	            
  	            axesDefaults: {
- 	                tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+ 	                //tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
  	                tickOptions: {
  	                  angle: option['cateRotate'],
  	                  fontSize: option['fontSize']
@@ -473,7 +473,7 @@ var barLineChart=function(chartId,data,option){
   	                },
   	            },
   	            axesDefaults: {
-  	                tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+  	                //tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
   	                tickOptions: {
   	                  angle: option['cateRotate'],
   	                  fontSize: option['fontSize']
