@@ -40,6 +40,7 @@ var lineChart=function(chartId,data,option){
 		dicimal="%d";
 	}
 	
+	
 	//checkOption end
 	Array.prototype.getUnique = function(){
 		   var u = {}, a = [];
@@ -66,9 +67,12 @@ var lineChart=function(chartId,data,option){
 		$.each(data,function(index,indexEntry){
 			//alert(indexEntry[2]);
 			
+		    //var test = indexEntry[2];
+		    //console.log(test);
+			
+			
 			cateArray[index]=indexEntry[0];
 			seriesArray[index]=indexEntry[1];
-			
 			
 			
 		});
@@ -191,7 +195,37 @@ var lineChart=function(chartId,data,option){
 		}
 		value+="]";
 		
-	
+		var val="";
+		val+="[";
+		var checkUndefinedValue=0;
+		for(var i=0;i<slotArray.length;i++){
+				for(var j=0;j<slotArray[i].length;j++){
+					if(slotArray2[i][j]==undefined){
+						checkUndefinedValue=0; 
+					}else{
+						checkUndefinedValue=slotArray2[i][j];
+					}
+					if(i==0){
+						if(j==0){
+						val+=+checkUndefinedValue;
+						}else{
+						val+=","+checkUndefinedValue;	
+						}
+					}else{
+						if(cateLength==cateArrayUnique.length-1){
+							val+=","+checkUndefinedValue;
+						}else{
+							val+=","+checkUndefinedValue;
+						}
+					}
+					if(cateLength==0){
+						val+="";
+						cateLength=cateArrayUnique.length;
+					}
+					cateLength--;
+				}
+		}
+		val+="]";
 	    
 	    // Can specify a custom tick Array.
 	    // Ticks should match up one for each y value (category) in the series.
@@ -200,9 +234,22 @@ var lineChart=function(chartId,data,option){
 	    var obValue=eval("("+value+")");
 	    var obSeries=eval("("+series+")");
 	    
+	    var obVal=eval("("+val+")");
+	    var maxobVal = Math.max.apply(Math,obVal);
+	    var maxobValfun = (maxobVal + ((10*maxobVal)/100));
+	    var obValstr = (maxobValfun.toLocaleString("en-IN",{maximumSignificantDigits: 2})).replace(',','');
+	    var maxvalues = parseInt(obValstr);
 	    
-	    
-	    
+		if(option['maxY']==true){
+			maxY = maxvalues;
+		}else{
+			maxY = null;
+		}
+	    //console.log(obVal);
+	    //console.log(test);
+	    //console.log(test1);
+	    //console.log(test2);
+	    //console.log(test3);
 	    
 		//var ticks = ['May', 'June', 'July', 'August', 'June', 'July', 'August', 'June', 'July'];
 		 var plot2 = $.jqplot (chartId, obValue, {
@@ -212,6 +259,7 @@ var lineChart=function(chartId,data,option){
 		      // the axesDefaults object.  Here, we're using a canvas renderer
 		      // to draw the axis label which allows rotated text.
 		      series:obSeries,
+		      
 		      seriesColors: theme,
 		      legend:{ 
 	                show:true,
@@ -224,7 +272,6 @@ var lineChart=function(chartId,data,option){
 	                    }
 	                 }, 
 		      axesDefaults: {
-		    	
 		        //labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
 		        //tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
 		        tickOptions: {
@@ -249,7 +296,8 @@ var lineChart=function(chartId,data,option){
 		        	tickOptions: {formatString:dicimal, formatter: $.jqplot.euroFormatter},
 		        	pad: 0,
 		        	ticks:option['ticksY'],
-		        	min:0
+		        	min:0,
+		        	max:maxY,
 		        }
 		      },
 		      seriesDefaults:{
@@ -263,7 +311,6 @@ var lineChart=function(chartId,data,option){
 		            tooltipContentEditor:tooltipContentEditor
 		        }
 		    });
-		 
 		
 		 if(option['clickable']==true){
 			    $("#"+chartId+" >.jqplot-event-canvas").css( 'cursor', 'pointer' );
