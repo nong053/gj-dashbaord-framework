@@ -50,7 +50,7 @@ function tooltipContentEditorByCate(str, seriesIndex, pointIndex, plot) {
 	var themeCustomArray = themeCustom.split(",");
 	
 	
-	console.log(themeCustomArray);
+	//console.log(themeCustomArray);
 	
 	/*if(option['themeCustom']!=undefined){
 		$("#"+idChart+">.jqplot-highlighter-tooltip").css({"background":option['themeCustom'][pointIndex],"color":option['tooltipTextColor'],"opacity":"1","z-index":"12999","padding-left":"2px","padding-right":"5px"});
@@ -71,7 +71,7 @@ function tooltipContentEditorByCate(str, seriesIndex, pointIndex, plot) {
 function tooltipContentEditor(str, seriesIndex, pointIndex, plot) {
     // display series_label, x-axis_tick, y-axis value
 	//console.log(option['themeCustom'][pointIndex]);
-    console.log($(".idChart").text());
+    //console.log($(".idChart").text());
     var idChart=$(".idChart").text();
     var themeCustom = $("#theme"+idChart).text();
 	var themeCustomArray = themeCustom.split(",");
